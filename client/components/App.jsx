@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
+import Header from "./Header.jsx";
 
-export default function App () {
+export default function App() {
   return (
     <div>
-      <div className="header">
-      </div>
+      <Header />
       <div className="text">
-      <h1>Test</h1>
+        <span>Hello Friends</span>
+        <h1>Test</h1>
       </div>
     </div>
-  )
+  );
 }

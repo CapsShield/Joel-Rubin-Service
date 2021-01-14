@@ -9,17 +9,20 @@ root {
   --main-editor-section-title-color: #a3a3a3;
 }
 
-* {
-  font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: Arial, sans-serif;
   background-color: rgb(27, 40, 56);
-  color: rgb(232, 232, 232);
+  color: #dbe2e6;
   /* background-image: linear-gradient(rgb(127, 154, 187), rgb(27, 40, 56)); */
   /* background-repeat: no-repeat;
   background-blend-mode: screen; */
 }
 
 .header {
-  background: #171a21;
+  background-color: #171a21;
+  font-family: Arial, sans-serif;
+  font-weight: 300;
+  color: #dbe2e6;
   position: fixed;
   top: 0;
   left: 0;
@@ -27,7 +30,70 @@ root {
   text-align: center;
   z-index: 20;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
-  overflow: hidden;
-  height: 100px;
+  /* overflow: hidden; */
+  height: 104px;
   padding: 13px 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
+.logo {
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.logo:hover {
+  color: #f2f8fc;
+}
+
+.header-button {
+  background-color: #171a21;
+  outline: none;
+  cursor: pointer;
+  color: #dbe2e6;
+  border: none;
+}
+
+.header-button:hover {
+  color: #f2f8fc;
+}
+.header-button-dropDown {
+  background-color: #171a21;
+  outline: none;
+  cursor: pointer;
+  color: #dbe2e6;
+  border: none;
+}
+
+.header-button-dropDown:hover {
+  color: #f2f8fc;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding-top: 45px;
+}
+.dropdown-content {
+  font-weight: 300;
+  padding-left: 10px;
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #171a21;
+  min-width: 160px;
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+  z-index: 22;
+  cursor: pointer;
+  transition: 1s
+}
+
+h3:hover {
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  border: none;
+}
+
+
