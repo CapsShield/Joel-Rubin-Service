@@ -6,6 +6,6 @@ const photoSeed = require('./photoSeed.js')
 const reviewSeed = require('./reviewSeed.js')
 const userTagSeed = require('./userTagSeed.js')
 
-export.modules = {
+module.exports = {
   gameSeed, gamesTagsSeed, photoSeed, reviewSeed, userTagSeed
 }

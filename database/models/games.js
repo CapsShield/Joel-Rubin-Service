@@ -3,6 +3,7 @@ const sequelize = new Sequelize('vapor', 'root', null, {
   host: 'localhost', dialect: 'mysql'
 });
 
+
 const Games = sequelize.define('Games', {
   id: {
     //fk in Photos, Reviews, GamesTags
@@ -14,7 +15,7 @@ const Games = sequelize.define('Games', {
 
   gameHeaderImageUrl: Sequelize.STRING,
 
-  gameSynopsis: Sequelize.STRING,
+  gameSynopsis: Sequelize.TEXT,
 
   releaseDate: Sequelize.DATEONLY,
 
@@ -23,5 +24,7 @@ const Games = sequelize.define('Games', {
   publisher: Sequelize.STRING,
 
 }, { timestamps: false });
+
+
 
 module.exports = Games

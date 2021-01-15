@@ -1,15 +1,8 @@
-const faker = require('faker')
+const faker = require('faker');
 
-let reviews = [
-  {
-    pos_neg: true,
-    date: Date.now(),
-    GameId: 1
-  }
-];
+let reviews = [{ pos_neg: null, date: null, GameId: null }];
 
 const seedReviews = (array) => {
-
   for (let i = 0; i < 100; i++) {
     array[i] = { pos_neg: null, date: null, GameId: null }
     var randomBool = faker.random.boolean()
@@ -19,9 +12,8 @@ const seedReviews = (array) => {
     array[i].pos_neg = randomBool
     array[i].GameId = randomNum
   }
-}
+};
 
-seedReviews(reviews)
-console.log(reviews)
+seedReviews(reviews);
 
-module.exports = reviews
+module.exports = reviews;
