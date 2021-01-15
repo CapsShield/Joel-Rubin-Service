@@ -1,5 +1,7 @@
-const Sequelize = require('sequelize')
-const { sequelize } = require('../index.js')
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('vapor', 'root', null, {
+  host: 'localhost', dialect: 'mysql'
+})
 
 const Games = sequelize.define('Games', {
   id: {
@@ -27,6 +29,6 @@ const Games = sequelize.define('Games', {
     type: Sequelize.STRING,
   },
 
-})
+}, { timestamps: false })
 
 module.exports = Games

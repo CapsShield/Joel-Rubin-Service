@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize')
-const db = require('../index.js').sequelize
+const sequelize = new Sequelize('vapor', 'root', null, {
+  host: 'localhost', dialect: 'mysql'
+})
 
-const UserTags = db.define('UserTags', {
+const UserTags = sequelize.define('UserTags', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -10,7 +12,6 @@ const UserTags = db.define('UserTags', {
   tag: {
     type: Sequelize.STRING
   }
-
-})
+}, { timestamps: false })
 
 module.exports = UserTags;

@@ -1,7 +1,9 @@
 const Sequelize = require('sequelize')
-const db = require('../index.js').sequelize
+const sequelize = new Sequelize('vapor', 'root', null, {
+  host: 'localhost', dialect: 'mysql'
+})
 
-const Reviews = db.define('Reviews', {
+const Reviews = sequelize.define('Reviews', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -14,7 +16,6 @@ const Reviews = db.define('Reviews', {
     type: Sequelize.DATEONLY,
   }
 
-
-})
+}, { timestamps: false })
 
 module.exports = Reviews
