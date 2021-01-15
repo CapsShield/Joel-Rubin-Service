@@ -7,17 +7,13 @@ const sequelize = new Sequelize('vapor', 'root', null, {
 
 
 
-
-
 return sequelize.sync({ force: true }).then(() => {
   console.log("synced")
 })
   .then(() => {
-    console.log('Games Table Created')
     return Games.bulkCreate(gameSeed)
   })
   .then(() => {
-    console.log('Photos Table Created')
     return Photos.bulkCreate(photoSeed)
   })
   .then(() => {
