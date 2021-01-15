@@ -2,105 +2,29 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('vapor', 'root', null, {
   host: 'localhost', dialect: 'mysql'
 })
+const Games = require('./models/games.js')
+const GamesTags = require('./models/gamesTags.js')
+const Photos = require('./models/photos.js')
+const Reviews = require('./models/reviews.js')
+const UserTags = require('./models/userTags.js')
 
+//Assocs
+Games.hasMany(Photos)
+Photos.belongsTo(Games)
+Games.hasMany(Reviews)
+Reviews.belongsTo(Games)
 
-//associations
-sequelize.sync({ force: true })
-//photos
-
-
-
-sequelize.authenticate().then(() => {
-  console.log('Connection has been established successfully.');
-});
-
-
-const Games = sequelize.define('Games', {
-  id: {
-    //fk in Photos, Reviews, GamesTags
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  name: {
-    type: Sequelize.STRING,
-  },
-  gameHeaderImageUrl: {
-    type: Sequelize.STRING,
-  },
-  gameSynopsis: {
-    type: Sequelize.STRING,
-  },
-  releaseDate: {
-    type: Sequelize.DATEONLY,
-  },
-  developer: {
-    type: Sequelize.STRING,
-  },
-  publisher: {
-    type: Sequelize.STRING,
-  }
-})
-
-
-const Photos = sequelize.define('Photos', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  description: {
-    type: Sequelize.STRING,
-  },
-  photoUrl: {
-    type: Sequelize.STRING,
-  }
-})
-
-const Reviews = sequelize.define('Reviews', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  pos_neg: {
-    type: Sequelize.BOOLEAN,
-  },
-  date: {
-    type: Sequelize.DATEONLY,
-  }
-
-})
-
-const GamesTags = sequelize.define('GamesTags', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-})
-
-const UserTags = sequelize.define('UserTags', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  tag: {
-    type: Sequelize.STRING
-  }
-})
-
-// Associations //
-
-// Games.hasMany(Photos)
-// Games.hasMany(Reviews)
-
-
+//Join Table Assocs
+Games.belongsToMany(UserTags, { through: GamesTags })
+UserTags.belongsToMany(Games, { through: GamesTags })
 
 
 
 module.exports = {
-  // Test: Test,
-  sequelize: sequelize
+  sequelize: sequelize,
+  Games: Games,
+  GamesTags: GamesTags,
+  Photos: Photos,
+  Reviews: Reviews,
+  UserTags: UserTags
 }
