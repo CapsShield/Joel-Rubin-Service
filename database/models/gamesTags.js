@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize('vapor', 'root', null, {
   host: 'localhost', dialect: 'mysql'
-})
+});
 
 const GamesTags = sequelize.define('GamesTags', {
   id: {
@@ -10,6 +10,6 @@ const GamesTags = sequelize.define('GamesTags', {
     primaryKey: true
   }
 
-}, { timestamps: false })
+}, { timestamps: false });
 
-module.exports = GamesTags
+module.exports = GamesTags;

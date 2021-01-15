@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize('vapor', 'root', null, {
   host: 'localhost', dialect: 'mysql'
-})
+});
 
 const UserTags = sequelize.define('UserTags', {
   id: {
@@ -9,9 +9,7 @@ const UserTags = sequelize.define('UserTags', {
     autoIncrement: true,
     primaryKey: true
   },
-  tag: {
-    type: Sequelize.STRING
-  }
-}, { timestamps: false })
+  tag: Sequelize.STRING
+}, { timestamps: false });
 
 module.exports = UserTags;

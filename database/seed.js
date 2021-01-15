@@ -1,5 +1,4 @@
-
-const { sequelize: db, Games, GamesTags, Photos, Reviews, UserTags } = require('./index.js')
+const { sequelize: db, Games, GamesTags, Photos, Reviews, UserTags } = require('./index.js');
 
 
 let gameSeed = [
@@ -12,7 +11,7 @@ let gameSeed = [
     publisher: 'Nintendo'
 
   }
-]
+];
 
 
 
@@ -20,14 +19,14 @@ db.sync({ force: true })
   .then(() => {
     console.log('Test Table Created')
     return Games.bulkCreate(gameSeed)
-  })
+  });
   .then(() => {
     console.log('data added')
     return Games.findAll()
-  })
+  });
   .then((tests) => {
     console.log(tests)
-  })
+  });
   .then(() => {
     process.exit()
-  })
+  });

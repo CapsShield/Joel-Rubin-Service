@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('vapor', 'root', null, {
   host: 'localhost', dialect: 'mysql'
-})
+});
 
 const Games = sequelize.define('Games', {
   id: {
@@ -10,25 +10,18 @@ const Games = sequelize.define('Games', {
     autoIncrement: true,
     primaryKey: true
   },
-  name: {
-    type: Sequelize.STRING,
-  },
-  gameHeaderImageUrl: {
-    type: Sequelize.STRING,
-  },
-  gameSynopsis: {
-    type: Sequelize.STRING,
-  },
-  releaseDate: {
-    type: Sequelize.DATEONLY,
-  },
-  developer: {
-    type: Sequelize.STRING,
-  },
-  publisher: {
-    type: Sequelize.STRING,
-  },
+  name: Sequelize.STRING,
 
-}, { timestamps: false })
+  gameHeaderImageUrl: Sequelize.STRING,
+
+  gameSynopsis: Sequelize.STRING,
+
+  releaseDate: Sequelize.DATEONLY,
+
+  developer: Sequelize.STRING,
+
+  publisher: Sequelize.STRING,
+
+}, { timestamps: false });
 
 module.exports = Games

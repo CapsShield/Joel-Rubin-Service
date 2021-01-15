@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize('vapor', 'root', null, {
   host: 'localhost', dialect: 'mysql'
-})
+});
 
 const Photos = sequelize.define('Photos', {
   id: {
@@ -9,13 +9,8 @@ const Photos = sequelize.define('Photos', {
     autoIncrement: true,
     primaryKey: true
   },
-  description: {
-    type: Sequelize.STRING,
-  },
-  photoUrl: {
-    type: Sequelize.STRING,
-  }
+  description: Sequelize.STRING,
+  photoUrl: Sequelize.STRING,
+}, { timestamps: false });
 
-}, { timestamps: false })
-
-module.exports = Photos
+module.exports = Photos;
