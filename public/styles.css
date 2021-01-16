@@ -96,4 +96,33 @@ h3:hover {
   border: none;
 }
 
+.nav {
+  margin-top: 100px;
+}
+.search-content {
+  width: 940px;
+  height: 66px;
+  background-color: #54a5d4;
+  margin: auto;
+  border: 1px #30333b solid;
+  display: grid;
+  grid-template-columns: 114px 95px 104px 66px 103px 218px 239px;
 
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+}
+
+.navButton {
+  font-size: 15px;
+  background-color: #54a5d4;
+  color: #dbe2e6;
+  outline: none;
+  border: none;
+  padding-top: 20px;
+  text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
+}
+
+.navButton:hover {
+  background-color: #d9dadd;
+  text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
+  color: black;
+}

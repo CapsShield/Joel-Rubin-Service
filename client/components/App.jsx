@@ -1,14 +1,37 @@
 import React from "react";
 import Header from "./Header.jsx";
+import Nav from "./Nav.jsx";
+import axios from "axios";
 
-export default function App() {
-  return (
-    <div>
-      <Header />
-      <div className="text">
-        <span>Hello Friends</span>
-        <h1>Test</h1>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      photoId: 1,
+    };
+  }
+  componentDidMount() {
+    axios.get(`/api/games/${this.state.photoId}/photo`).then((response) => {
+      console.log(response);
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <Header />
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <div className="nav">
+          <Nav />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default App;
