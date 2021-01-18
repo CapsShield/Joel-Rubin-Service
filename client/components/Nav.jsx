@@ -3,26 +3,34 @@ import React from "react";
 export default function Nav() {
   return (
     <div>
+      <div className="nav">
+        <button className="cart">CART(1)</button>
+      </div>
       <div className="search-content">
-        <div>
-          <button className="navButton">Your Store</button>
-        </div>
-        <div>
-          <button className="navButton">Browse</button>
-        </div>
-        <div>
-          <button className="navButton">Points Shop</button>
-        </div>
-        <div>
-          <button className="navButton">News</button>
-        </div>
-        <div>
-          <button className="navButton">Vapor Labs</button>
-        </div>
+        <button className="navButton" id="b1">
+          Your Store
+        </button>
+
+        <button className="navButton" id="b2">
+          Browse
+        </button>
+
+        <button className="navButton" id="b3">
+          Points Shop
+        </button>
+
+        <button className="navButton" id="b4">
+          News
+        </button>
+
+        <button className="navButton" id="b5">
+          Vapor Labs
+        </button>
         <div></div>
-        <div>
-          <input className="navButton" placeholder="visit the store"></input>
-        </div>
+        <img
+          className="img-nav"
+          src="https://steamstore-a.akamaihd.net/public/images/v6/store_header_search.png?v=1"
+        />
       </div>
     </div>
   );
