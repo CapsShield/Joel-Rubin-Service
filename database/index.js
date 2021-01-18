@@ -25,10 +25,10 @@ UserTags.belongsToMany(Games, { through: GamesTags });
 
 
 module.exports = {
-  sequelize,
-  Games,
-  GamesTags,
-  Photos,
-  Reviews,
-  UserTags
+  sequelize: sequelize,
+  Games: Games,
+  GamesTags: GamesTags,
+  Photos: Photos,
+  Reviews: Reviews,
+  UserTags: UserTags
 };

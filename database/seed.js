@@ -11,11 +11,14 @@ sequelize.sync({ force: true }).then(() => {
   console.log("synced")
 })
   .then(() => {
-    return Photos.destroy({ truncate: true })
+    return Games.bulkCreate(gameSeed)
   })
-  .then(() => {
-    return Photos.bulkCreate(photoSeed)
-  })
+  // .then(() => {
+  //   return Photos.destroy({ truncate: true })
+  // })
+  // .then(() => {
+  //   return Photos.bulkCreate(photoSeed)
+  // })
   // .then(() => {
   //   return Reviews.bulkCreate(reviewSeed)
   // })
