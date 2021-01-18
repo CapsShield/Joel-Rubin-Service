@@ -54,6 +54,11 @@ body {
   flex-direction: row;
 }
 
+.logo img {
+  width: 176px;
+  height: 44px;
+}
+
 
 .row1 {
   display: grid;
@@ -98,7 +103,7 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
-  padding-top: 45px;
+  padding-top: 30px;
 }
 .dropdown-content {
   font-weight: 300;
@@ -214,6 +219,7 @@ h3:hover {
   grid-template-columns: 616px 324px;
   grid-template-rows: 444px;
   margin: auto;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .game-photos {
@@ -222,19 +228,50 @@ h3:hover {
   grid-template-rows: 337px auto 65px auto 18px;
 }
 
-img {
+.review-table {
+  font-size: 10px;
+  color: #556772;
+  display: grid;
+  grid-template-columns: 104px 220px;
+}
+
+.blue {
+  color: #66c0F4;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.blue:hover {
+  color: white;
+}
+
+.tagButton {
+  color: #67C1F5;
+  font-size: 11px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  background: #67c1f533;
+  padding: 0px 7px;
+
+}
+
+.tagButton:hover {
+  color: white;
+  background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+}
+
+.date {
+  color: #8f98a0;
+}
+
+.carousel img {
   size: cover;
   width: 115px;
   padding: 5px;
 }
 
-.carousel {
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: nowrap; */
-  justify-content: space-between;
-  overflow: scroll;
-}
+
 
 .mainImg {
   background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_c02435ac01bff1e3af6c69e9ddeb77f6bf40caf2.1920x1080.jpg?t=1525832559");
@@ -245,7 +282,25 @@ img {
 .game-review {
   display: grid;
   grid-template-columns: 324px;
-  grid-template-rows: 151px auto 103px auto 15px 15px 37px 15px 15px auto 18px 22px auto
+  grid-template-rows: 151px 108px 142px 18px 18px 18px;
+  font-size: 12px;
+  color: #566772;
+}
+
+.gameSynopsis {
+  padding-top: 10px;
+}
+
+.gameSynopsis span {
+
+  font-size: 13px;
+  color: #C6D4DF;
+}
+
+.header-image img {
+  size: cover;
+  width: 323px;
+  height: 151px;
 }
 
 .navButton {
@@ -301,3 +356,56 @@ img {
   cursor: text;
 }
 
+.user-tags {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+
+.carousel {
+  height: 85px;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: nowrap; */
+  justify-content: space-between;
+  overflow: scroll;
+  overflow-y: hidden;
+}
+.carousel::-webkit-scrollbar{
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  width: 10px;
+  margin-left: 5px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  display: block;
+  background-color:rgb(26, 39, 55);
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+  display: block;
+  background-color: rgba( 62, 126, 167, 0.8);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.carousel::-webkit-scrollbar-button{
+ width: 30px;
+ background-color:rgb(26, 39, 55);
+}
+
+.carousel::-webkit-scrollbar-button:hover {
+  width: 30px;
+  background-color: rgba( 62, 126, 167, 0.8);
+ }
+
+.carousel::-webkit-scrollbar-corner {
+  display: none;
+}

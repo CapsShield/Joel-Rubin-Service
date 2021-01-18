@@ -9,10 +9,12 @@ export default function Nav() {
       <div className="search-content">
         <button className="navButton" id="b1">
           Your Store
+          <i className="fas fa-caret-down"></i>
         </button>
 
         <button className="navButton" id="b2">
           Browse
+          <i className="fas fa-caret-down"></i>
         </button>
 
         <button className="navButton" id="b3">

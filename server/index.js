@@ -21,8 +21,19 @@ app.get('/api/games/:id/photo', (req, res) => {
   })
 })
 
-
-app.listen(port, () => {
-  console.log(`listening on localhost:${port}`)
+app.get('/api/games/:id/game', (req, res) => {
+  let id = req.params.id
+  console.log(id)
+  Games.findByPk(id)
+    .then((result) => {
+      res.send(result)
+    })
 })
+
+db.sync().then(() => {
+  app.listen(port, () => {
+    console.log(`listening on localhost:${port}`)
+  })
+})
+
 

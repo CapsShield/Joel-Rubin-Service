@@ -1,4 +1,5 @@
 import React from "react";
+import GameReview from "./GameReview.jsx";
 
 class Game extends React.Component {
   constructor(props) {
@@ -10,10 +11,10 @@ class Game extends React.Component {
       <div className="carousel-header">
         <div></div>
         <div className="genres">
-          <span>All Games > Indie Games > Antichamber</span>
+          <span>All Games > Indie Games > {this.props.game.data.name}</span>
         </div>
         <div className="game-title">
-          <span>Antichamber</span>
+          <span>{this.props.game.data.name}</span>
           <button>Community Hub</button>
         </div>
         <div></div>
@@ -37,7 +38,9 @@ class Game extends React.Component {
             </div>
           </div>
 
-          <div className="game-review"></div>
+          <div className="game-rev-container">
+            <GameReview game={this.props.game} />
+          </div>
         </div>
       </div>
     );
