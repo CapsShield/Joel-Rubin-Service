@@ -1,4 +1,4 @@
-root {
+/* root {
   --main-text-color: #dbe2e6;
   --main-light-blue-background: #93b3c8;
   --main-text-on-light-blue: rgb(209, 209, 209);
@@ -7,7 +7,7 @@ root {
   --main-editor-text-color: #e6e7e8;
   --main-editor-input-bg-color: #30333b;
   --main-editor-section-title-color: #a3a3a3;
-}
+} */
 
 body {
   font-family: Arial, sans-serif;
@@ -18,8 +18,16 @@ body {
   background-blend-mode: screen; */
 }
 
-.header {
+.header-container {
+  width: 100%;
   background-color: #171a21;
+  height: 108px;
+  z-index: 20;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+}
+
+.header {
+
   font-family: Arial, sans-serif;
   font-weight: 300;
   color: #dbe2e6;
@@ -28,14 +36,33 @@ body {
   left: 0;
   right: 0;
   text-align: center;
-  z-index: 20;
-  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+  z-index: 19;
+
   /* overflow: hidden; */
   height: 104px;
-  padding: 13px 8px;
+  width: 940px;
+
+  display: grid;
+  grid-template-rows: 30px 74px;
+  margin: auto;
+  /* flex-direction: row;
+  justify-content: space-evenly; */
+}
+
+.logo {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+}
+
+
+.row1 {
+  display: grid;
+  grid-template-columns: auto 240px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 2px 176px 56px 100px 62px 76px auto;
 }
 .logo {
   padding-top: 20px;
@@ -96,4 +123,181 @@ h3:hover {
   border: none;
 }
 
+.nav-container {
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: 22px 35px;
+  width: 100%
+}
+
+.nav {
+  margin: auto;
+  width: 940px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.cart {
+  color: #42520c;
+  TEXT-align: center;
+  width: 96px;
+  height: 20px;
+  background-color: #5C7310;
+  cursor: pointer;
+  font-size: 11px;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+}
+
+.cart:hover {
+  BACKGROUND-color: #8cb105;
+  color: black;
+}
+.search-content {
+  width: 940px;
+  height: 35px;
+  background-color: rgba( 62, 126, 167, 0.8);
+  margin: auto;
+  border: 1px #30333b solid;
+  display: grid;
+  grid-template-columns: 114px 100px 104px 66px 103px 218px 239px;
+
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+}
+
+.game {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-header {
+  height: 100px;
+  display: grid;
+  grid-template-columns: 940px;
+  grid-template-rows: 16px 27px 30px 16px;
+}
+.game-title {
+  display: flex;
+  justify-content: space-between
+}
+
+.genres span {
+  color: #8F98A0;
+  font-size: 12px;
+}
+
+.game-title button {
+  color: #67c1f5;
+  background: rgba( 103, 193, 245, 0.2);
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+}
+
+.game-title button:hover {
+  color: white;
+  background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+}
+
+.game-title span {
+  font-size: 26px;
+}
+.game-container {
+  /* padding-top: 100px; */
+  margin: auto;
+  display: grid;
+  grid-template-columns: 616px 324px;
+  grid-template-rows: 444px;
+  margin: auto;
+}
+
+.game-photos {
+  display: grid;
+  grid-template-columns: 600px;
+  grid-template-rows: 337px auto 65px auto 18px;
+}
+
+img {
+  size: cover;
+  width: 115px;
+  padding: 5px;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: nowrap; */
+  justify-content: space-between;
+  overflow: scroll;
+}
+
+.mainImg {
+  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_c02435ac01bff1e3af6c69e9ddeb77f6bf40caf2.1920x1080.jpg?t=1525832559");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.game-review {
+  display: grid;
+  grid-template-columns: 324px;
+  grid-template-rows: 151px auto 103px auto 15px 15px 37px 15px 15px auto 18px 22px auto
+}
+
+.navButton {
+  font-size: 15px;
+  background-color: rgba( 62, 126, 167, 0.8);
+  color: #c4cace;
+  outline: none;
+  border: none;
+  padding-top: 5px;
+  text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
+  height: 35px;
+  cursor: pointer;
+
+
+}
+
+.navSearch {
+  font-size: 15px;
+  background-color: rgba( 62, 126, 167, 0.8);
+  color: #dbe2e6;
+  outline: none;
+  border: 4px solid #316282;
+  padding-top: 5px;
+;
+}
+.navButton:hover {
+  background-color: #d9dadd;
+  text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
+  color: black;
+}
+
+#b1 {
+  border-right: 2.5px solid rgba(0, 0, 0, 0.25);
+
+}
+#b2 {
+  border-right: 2.5px solid rgba(0, 0, 0, 0.25);
+
+}
+
+#b3 {
+  border-right: 2.5px solid rgba(0, 0, 0, 0.25);
+}
+#b4 {
+  border-right: 2.5px solid rgba(0, 0, 0, 0.25);
+}
+#b5 {
+  border-right: 2.5px solid rgba(0, 0, 0, 0.25);
+}
+
+.img-nav {
+  padding-top: 5px;
+  cursor: text;
+}
 
