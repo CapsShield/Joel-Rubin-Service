@@ -3,7 +3,11 @@ import React from "react";
 export default function Header() {
   return (
     <div className="header">
-      <div className="row1"></div>
+      <div className="row1">
+        {/* <button>Install Vapor</button>
+        <button>login</button>
+        <button>language</button> */}
+      </div>
       <div className="row2">
         <div></div>
         <div className="logo">

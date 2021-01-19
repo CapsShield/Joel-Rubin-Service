@@ -9,16 +9,19 @@ let photos = [
   "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_1bf5f04ea4ffb1aaf3e77bef5e31793486f789ae.1920x1080.jpg?t=1525832559",
   "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_167e0de7713d2d1d8ee613ef078af986fb3212ef.1920x1080.jpg?t=1525832559",
 ];
-class Game extends React.Component {
+class GameCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       i: 0,
     };
+    this.clickHandler = this.clickHandler.bind(this);
+    this.photoInterval = this.photoInterval.bind(this);
+    this.autoScroll = this.autoScroll.bind(this);
   }
 
   componentDidMount() {
-    setInterval(this.photoInterval.bind(this), 5000);
+    setInterval(this.photoInterval, 5000);
   }
 
   photoInterval() {
@@ -26,12 +29,39 @@ class Game extends React.Component {
     this.setState({
       i: this.state.i + 1,
     });
-    console.log(this.state.i);
+    this.autoScroll();
     if (this.state.i === len) {
       this.setState({
         i: 0,
       });
+      this.autoScroll();
     }
+  }
+
+  autoScroll() {
+    let elem = document.getElementById("photoCarousel");
+    if (this.state.i === 4) {
+      elem.scrollBy({
+        top: 0,
+        left: 1000,
+        behavior: "smooth",
+      });
+    }
+    if (this.state.i === 0) {
+      elem.scrollBy({
+        top: 0,
+        left: -1000,
+        behavior: "smooth",
+      });
+    }
+  }
+
+  clickHandler(e) {
+    let value = e.target.attributes["data-i"].value;
+    this.setState({
+      i: Number(value),
+    });
+    e.preventDefault();
   }
 
   render() {
@@ -52,38 +82,51 @@ class Game extends React.Component {
               <img src={photos[this.state.i]} />
             </div>
             <div></div>
-            <div className="carousel">
+            <div className="carousel" id="photoCarousel">
               <img
+                data-i={0}
                 className={this.state.i === 0 ? "marquee" : "normal"}
                 src={photos[0]}
+                onClick={this.clickHandler}
               />
               <img
+                data-i={1}
                 className={this.state.i === 1 ? "marquee" : "normal"}
                 src={photos[1]}
+                onClick={this.clickHandler}
               />
               <img
+                data-i={2}
                 className={this.state.i === 2 ? "marquee" : "normal"}
                 src={photos[2]}
+                onClick={this.clickHandler}
               />
               <img
+                data-i={3}
                 className={this.state.i === 3 ? "marquee" : "normal"}
                 src={photos[3]}
+                onClick={this.clickHandler}
               />
               <img
+                data-i={4}
                 className={this.state.i === 4 ? "marquee" : "normal"}
                 src={photos[4]}
+                onClick={this.clickHandler}
               />
               <img
+                data-i={5}
                 className={this.state.i === 5 ? "marquee" : "normal"}
                 src={photos[5]}
+                onClick={this.clickHandler}
               />
               <img
+                data-i={6}
                 className={this.state.i === 6 ? "marquee" : "normal"}
                 src={photos[6]}
+                onClick={this.clickHandler}
               />
             </div>
           </div>
-
           <div className="game-rev-container">
             <GameReview game={this.props.game} />
           </div>
@@ -93,4 +136,4 @@ class Game extends React.Component {
   }
 }
 
-export default Game;
+export default GameCarousel;

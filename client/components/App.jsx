@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header.jsx";
 import Nav from "./Nav.jsx";
-import Game from "./Game.jsx";
+import GameCarousel from "./GameCarousel.jsx";
 import axios from "axios";
 
 class App extends React.Component {
@@ -36,7 +36,7 @@ class App extends React.Component {
             <Nav />
           </div>
           <div className="game">
-            <Game game={this.state.game} />
+            <GameCarousel game={this.state.game} />
           </div>
         </div>
       );
