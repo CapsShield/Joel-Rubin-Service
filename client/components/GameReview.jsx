@@ -3,7 +3,7 @@ import moment from "moment";
 
 export default function GameReview({ game }) {
   let format = moment(game.data.releaseDate).format("ll");
-  console.log(format);
+
   return (
     <div className="game-review">
       <div className="header-image">

@@ -31,7 +31,7 @@ body {
   font-family: Arial, sans-serif;
   font-weight: 300;
   color: #dbe2e6;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   right: 0;
@@ -265,16 +265,24 @@ h3:hover {
   color: #8f98a0;
 }
 
-.carousel img {
+.normal {
   size: cover;
   width: 115px;
-  padding: 5px;
+  margin: 5px;
+}
+
+.marquee {
+  border: 5px solid rgb(172, 170, 170);
+  size: cover;
+  width: 115px;
+
 }
 
 
 
-.mainImg {
-  background-image: url("https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_c02435ac01bff1e3af6c69e9ddeb77f6bf40caf2.1920x1080.jpg?t=1525832559");
+.mainImg img{
+  width: 600px;
+  height: 337px;
   background-repeat: no-repeat;
   background-size: cover;
 }
