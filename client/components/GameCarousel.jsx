@@ -1,36 +1,42 @@
 import React from "react";
 import GameReview from "./GameReview.jsx";
+import Modal from "./Modal.jsx";
 
-let photos = [
-  "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_c02435ac01bff1e3af6c69e9ddeb77f6bf40caf2.1920x1080.jpg?t=1525832559",
-  "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_8604088893b9d0ea42d41c741619e740e92fcee0.1920x1080.jpg?t=1525832559",
-  "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_fe2278241777765a73f5cc1567c17307d92ec6bb.1920x1080.jpg?t=1525832559",
-  "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_62a1e3085fee312cf6c1025ec89018fa98821d99.1920x1080.jpg?t=1525832559",
-  "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_1bf5f04ea4ffb1aaf3e77bef5e31793486f789ae.1920x1080.jpg?t=1525832559",
-  "https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_167e0de7713d2d1d8ee613ef078af986fb3212ef.1920x1080.jpg?t=1525832559",
-];
 class GameCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      photos: null,
       i: 0,
+      bigImg: null,
+      clicked: false,
     };
     this.clickHandler = this.clickHandler.bind(this);
     this.photoInterval = this.photoInterval.bind(this);
     this.autoScroll = this.autoScroll.bind(this);
+    this.bigClickHandler = this.bigClickHandler.bind(this);
+    this.closeClicker = this.closeClicker.bind(this);
   }
 
   componentDidMount() {
-    setInterval(this.photoInterval, 5000);
+    this.closeClicker();
+    this.setState(
+      {
+        photos: this.props.photos,
+      },
+      () => {
+        setInterval(this.photoInterval, 5000);
+      }
+    );
   }
 
   photoInterval() {
-    let len = photos.length;
+    let len = this.props.photos.length;
     this.setState({
       i: this.state.i + 1,
     });
     this.autoScroll();
-    if (this.state.i === len) {
+    if (this.state.i === len - 1) {
       this.setState({
         i: 0,
       });
@@ -40,7 +46,7 @@ class GameCarousel extends React.Component {
 
   autoScroll() {
     let elem = document.getElementById("photoCarousel");
-    if (this.state.i === 4) {
+    if (this.state.i === 5) {
       elem.scrollBy({
         top: 0,
         left: 1000,
@@ -64,6 +70,24 @@ class GameCarousel extends React.Component {
     e.preventDefault();
   }
 
+  bigClickHandler(e) {
+    let value = e.target.attributes["data-i"].value;
+    this.setState({
+      bigImg: Number(value),
+      clicked: true,
+    });
+    e.preventDefault();
+  }
+  closeClicker(e) {
+    let modal = document.getElementById("modal-container");
+    window.onclick = function () {
+      if (e.target === modal) {
+        modal.style.display = "hidden";
+      }
+      e.preventDefault();
+    };
+  }
+
   render() {
     return (
       <div className="carousel-header">
@@ -79,56 +103,36 @@ class GameCarousel extends React.Component {
         <div className="game-container">
           <div className="game-photos">
             <div className="mainImg">
-              <img src={photos[this.state.i]} />
+              <img
+                src={this.props.photos[this.state.i].photoUrl}
+                onClick={this.bigClickHandler}
+                data-i={this.state.i}
+              />
             </div>
             <div></div>
             <div className="carousel" id="photoCarousel">
-              <img
-                data-i={0}
-                className={this.state.i === 0 ? "marquee" : "normal"}
-                src={photos[0]}
-                onClick={this.clickHandler}
-              />
-              <img
-                data-i={1}
-                className={this.state.i === 1 ? "marquee" : "normal"}
-                src={photos[1]}
-                onClick={this.clickHandler}
-              />
-              <img
-                data-i={2}
-                className={this.state.i === 2 ? "marquee" : "normal"}
-                src={photos[2]}
-                onClick={this.clickHandler}
-              />
-              <img
-                data-i={3}
-                className={this.state.i === 3 ? "marquee" : "normal"}
-                src={photos[3]}
-                onClick={this.clickHandler}
-              />
-              <img
-                data-i={4}
-                className={this.state.i === 4 ? "marquee" : "normal"}
-                src={photos[4]}
-                onClick={this.clickHandler}
-              />
-              <img
-                data-i={5}
-                className={this.state.i === 5 ? "marquee" : "normal"}
-                src={photos[5]}
-                onClick={this.clickHandler}
-              />
-              <img
-                data-i={6}
-                className={this.state.i === 6 ? "marquee" : "normal"}
-                src={photos[6]}
-                onClick={this.clickHandler}
-              />
+              {this.props.photos.map((photo, idx) => (
+                <img
+                  src={photo.photoUrl}
+                  className={this.state.i === idx ? "marquee" : "normal"}
+                  data-i={idx}
+                  onClick={this.clickHandler}
+                  key={idx}
+                  alt={photo.description}
+                />
+              ))}
             </div>
           </div>
           <div className="game-rev-container">
             <GameReview game={this.props.game} />
+          </div>
+          <div
+            className="modal-container"
+            style={
+              this.state.clicked ? { display: "block" } : { display: "none" }
+            }
+          >
+            <Modal bigImg={this.state.bigImg} photos={this.props.photos} />
           </div>
         </div>
       </div>

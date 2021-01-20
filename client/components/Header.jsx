@@ -4,14 +4,20 @@ export default function Header() {
   return (
     <div className="header">
       <div className="row1">
-        {/* <button>Install Vapor</button>
-        <button>login</button>
-        <button>language</button> */}
+        <div></div>
+        <div>
+          <button id="install">Install Vapor</button>
+          <button id="login">login</button>
+          <button id="language">
+            language
+            <i className="fas fa-caret-down"></i>
+          </button>
+        </div>
       </div>
       <div className="row2">
         <div></div>
         <div className="logo">
-          <img src="https://steamstore-a.akamaihd.net/public/shared/images/header/logo_steam.svg?t=962016" />
+          <img src="https://i.imgur.com/zY1nThy.png" />
         </div>
         <div className="dropdown">
           <button className="header-button-dropDown">STORE</button>
@@ -44,3 +50,5 @@ export default function Header() {
     </div>
   );
 }
+
+// <img src="https://steamstore-a.akamaihd.net/public/shared/images/header/logo_steam.svg?t=962016" />

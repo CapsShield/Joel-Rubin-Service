@@ -11,12 +11,16 @@ class App extends React.Component {
       photoId: 105,
       game: null,
       loaded: false,
+      photos: null,
     };
   }
   componentDidMount() {
-    // axios.get(`/api/games/${this.state.photoId}/photo`).then((response) => {
-    //   console.log(response);
-    // });
+    axios.get(`/api/games/${this.state.photoId}/photo`).then((response) => {
+      console.log(response);
+      this.setState({
+        photos: response.data,
+      });
+    });
     axios.get(`api/games/${this.state.photoId}/game`).then((response) => {
       this.setState({
         game: response,
@@ -36,7 +40,7 @@ class App extends React.Component {
             <Nav />
           </div>
           <div className="game">
-            <GameCarousel game={this.state.game} />
+            <GameCarousel photos={this.state.photos} game={this.state.game} />
           </div>
         </div>
       );

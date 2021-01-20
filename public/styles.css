@@ -1,21 +1,14 @@
-/* root {
-  --main-text-color: #dbe2e6;
-  --main-light-blue-background: #93b3c8;
-  --main-text-on-light-blue: rgb(209, 209, 209);
-  --main-top-image-bg: #1f2126;
-  --main-editor-bg-color: #363a43;
-  --main-editor-text-color: #e6e7e8;
-  --main-editor-input-bg-color: #30333b;
-  --main-editor-section-title-color: #a3a3a3;
-} */
+
 
 body {
   font-family: Arial, sans-serif;
   background-color: rgb(27, 40, 56);
   color: #dbe2e6;
-  /* background-image: linear-gradient(rgb(127, 154, 187), rgb(27, 40, 56)); */
-  /* background-repeat: no-repeat;
-  background-blend-mode: screen; */
+  background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
+  background-position-x: 50%;
+  background-position-y: -20%;
+  background-repeat: no-repeat;
+
 }
 
 .header-container {
@@ -62,6 +55,7 @@ body {
 
 .row1 {
   display: grid;
+  height: 30px;
   grid-template-columns: auto 240px;
 }
 
@@ -70,7 +64,7 @@ body {
   grid-template-columns: 2px 176px 56px 100px 62px 76px auto;
 }
 .logo {
-  padding-top: 20px;
+
   cursor: pointer;
 }
 
@@ -100,10 +94,28 @@ body {
 .header-button-dropDown:hover {
   color: #f2f8fc;
 }
+
+.row1 button {
+  background-color: #171a21;
+  border: none;
+  color: #dbe2e6;
+  margin-top: 5px;
+  font-size: 11px;
+}
+
+#login{
+  border-right: 1px solid #dbe2e6;
+
+}
+
+#install{
+  background: #5C7310;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 .dropdown-content {
   font-weight: 300;
@@ -433,4 +445,73 @@ h3:hover {
 
 .carousel::-webkit-scrollbar-corner {
   display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgba(0,0,0,0);
+  background-image: linear-gradient(135deg, rgb(53,100,128) 5%, rgb(26,48,61) 95%);
+  background-origin: padding-box;
+  /* background-position-x: 0%;
+  background-position-y: 0%; */
+  background-size: auto;
+  border-radius: 3px;
+  color: rgb(198, 212, 223);
+  display: block;
+  font-size: 12px;
+  padding: 10px;
+  position: absolute;
+  z-index: 99;
+  height: 720px;
+  width: 1250px;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.modal img {
+  border-bottom-color: rgb(198, 212, 223);
+  border-bottom-style: none;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(198, 212, 223);
+  border-left-style: none;
+  border-left-width: 0px;
+  border-right-color: rgb(198, 212, 223);
+  border-right-style: none;
+  border-right-width: 0px;
+  border-top-color: rgb(198, 212, 223);
+  border-top-style: none;
+  border-top-width: 0px;
+  color: rgb(198, 212, 223);
+  cursor: pointer;
+  display: inline;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height: 695.799px;
+  margin: 0px;
+
+  max-height: 807px;
+  max-width: 1237px;
+  opacity: 1;
+  padding: 0px;
+
+  width: 1237px;
+
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
 }
