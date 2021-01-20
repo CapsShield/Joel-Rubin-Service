@@ -20,6 +20,9 @@ class Modal extends React.Component {
     //   document.body.addEventListener('click', this.props.clickSet)
     // }
   }
+  // UNSAFE_componentWillMount() {
+  //   document.addEventListener("click", this.props.clickSet);
+  // }
 
   incrementer() {
     if (!this.state.bigImg) {

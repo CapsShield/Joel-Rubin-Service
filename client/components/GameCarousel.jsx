@@ -80,20 +80,15 @@ class GameCarousel extends React.Component {
     e.preventDefault();
   }
 
-  clickSet() {
-    this.setState({
-      clicked: false,
-    });
+  clickSet(e) {
+    e.preventDefault();
+    let body = document.getElementById("full-screen");
+    if (e.target === body) {
+      this.setState({
+        clicked: false,
+      });
+    }
   }
-  // closeClicker(e) {
-  //   let modal = document.getElementById("modal-container");
-  //   window.onclick = function () {
-  //     if (e.target === modal) {
-  //       modal.style.display = "hidden";
-  //     }
-  //     e.preventDefault();
-  //   };
-  // }
 
   render() {
     return (
@@ -134,16 +129,25 @@ class GameCarousel extends React.Component {
             <GameReview game={this.props.game} />
           </div>
           <div
-            className="modal-container"
+            id="full-screen"
+            onClick={this.clickSet}
             style={
               this.state.clicked ? { display: "block" } : { display: "none" }
             }
           >
-            <Modal
-              clickSet={this.clickSet}
-              bigImg={this.state.bigImg}
-              photos={this.props.photos}
-            />
+            <div
+              className="modal-container"
+              style={
+                this.state.clicked ? { display: "block" } : { display: "none" }
+              }
+              ref={(node) => (this.node = node)}
+            >
+              <Modal
+                clickSet={this.clickSet}
+                bigImg={this.state.bigImg}
+                photos={this.props.photos}
+              />
+            </div>
           </div>
         </div>
       </div>

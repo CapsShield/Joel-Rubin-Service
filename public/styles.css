@@ -450,6 +450,16 @@ h3:hover {
 .hidden {
   display: none;
 }
+#full-screen {
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  height:100%;
+  width:100%;
+  background-color: rgba(0, 0, 0, 0.8)
+}
 
 .modal {
   background-attachment: scroll;
@@ -465,8 +475,8 @@ h3:hover {
   padding: 10px;
   position: absolute;
   z-index: 99;
-  height: 730px;
-  width: 1250px;
+  max-height: 730px;
+  max-width: 1250px;
   position: fixed;
 
   transform: translate(-50%, -50%);
@@ -499,13 +509,13 @@ h3:hover {
   display: inline;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
-  height: 695.799px;
+  height: auto;
   margin: 0px;
   max-height: 807px;
   max-width: 1237px;
   opacity: 1;
   padding: 0px;
-  width: 1237px;
+  width: 100%;
 
 }
 
