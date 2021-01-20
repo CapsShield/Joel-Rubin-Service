@@ -16,7 +16,6 @@ class App extends React.Component {
   }
   componentDidMount() {
     axios.get(`/api/games/${this.state.photoId}/photo`).then((response) => {
-      console.log(response);
       this.setState({
         photos: response.data,
       });

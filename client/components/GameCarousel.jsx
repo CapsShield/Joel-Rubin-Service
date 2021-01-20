@@ -140,9 +140,9 @@ class GameCarousel extends React.Component {
               style={
                 this.state.clicked ? { display: "block" } : { display: "none" }
               }
-              ref={(node) => (this.node = node)}
             >
               <Modal
+                clicked={this.state.clicked}
                 clickSet={this.clickSet}
                 bigImg={this.state.bigImg}
                 photos={this.props.photos}

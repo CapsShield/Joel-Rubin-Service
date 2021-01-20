@@ -14,34 +14,34 @@ body {
 .header-container {
   width: 100%;
   background-color: #171a21;
-  height: 108px;
+  height: 98px;
   z-index: 20;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
 }
 
-.header {
+/* .header {
 
   font-family: Arial, sans-serif;
   font-weight: 300;
   color: #dbe2e6;
   /* position: fixed; */
-  top: 0;
+  /* top: 0;
   left: 0;
   right: 0;
   text-align: center;
-  z-index: 19;
+  z-index: 19; */
 
   /* overflow: hidden; */
-  height: 104px;
-  width: 940px;
+  /* height: 104px;
+  width: 940px; */
 
-  display: grid;
+  /* display: grid;
   grid-template-rows: 30px 74px;
-  margin: auto;
+  margin: auto; */
   /* flex-direction: row;
   justify-content: space-evenly; */
-}
-
+/* } */
+/*
 .logo {
   display: flex;
   flex-direction: row;
@@ -50,29 +50,29 @@ body {
 .logo img {
   width: 176px;
   height: 44px;
-}
+} */
 
-
+/*
 .row1 {
   display: grid;
   height: 30px;
   grid-template-columns: auto 240px;
-}
+} */
 
-.row2 {
+/* .row2 {
   display: grid;
   grid-template-columns: 2px 176px 56px 100px 62px 76px auto;
-}
-.logo {
+} */
+/* .logo {
 
   cursor: pointer;
 }
 
 .logo:hover {
   color: #f2f8fc;
-}
+} */
 
-.header-button {
+/* .header-button {
   background-color: #171a21;
   outline: none;
   cursor: pointer;
@@ -82,26 +82,26 @@ body {
 
 .header-button:hover {
   color: #f2f8fc;
-}
-.header-button-dropDown {
+} */
+/* .header-button-dropDown {
   background-color: #171a21;
   outline: none;
   cursor: pointer;
   color: #dbe2e6;
   border: none;
-}
+} */
 
-.header-button-dropDown:hover {
+/* .header-button-dropDown:hover {
   color: #f2f8fc;
-}
+} */
 
-.row1 button {
+/* .row1 button {
   background-color: #171a21;
   border: none;
   color: #dbe2e6;
   margin-top: 5px;
   font-size: 11px;
-}
+} */
 
 #login{
   border-right: 1px solid #dbe2e6;
@@ -110,14 +110,23 @@ body {
 
 #install{
   background: #5C7310;
+  padding: 5px;
 }
 
-.dropdown {
+#install img {
+  margin-right: 5px;
+}
+
+#language i {
+  margin-left: 5px;
+}
+
+/* .dropdown {
   position: relative;
   display: inline-block;
   padding-top: 10px;
-}
-.dropdown-content {
+} */
+/* .dropdown-content {
   font-weight: 300;
   padding-left: 10px;
   text-align: left;
@@ -125,20 +134,20 @@ body {
   position: absolute;
   background-color: #171a21;
   min-width: 160px;
-  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+
   z-index: 22;
   cursor: pointer;
   transition: 1s
-}
+} */
 
 h3:hover {
   color: white;
 }
 
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
   display: block;
   border: none;
-}
+} */
 
 .nav-container {
   margin-top: 10px;
@@ -350,10 +359,11 @@ h3:hover {
   text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
   height: 35px;
   cursor: pointer;
-
-
 }
 
+.navButton i {
+  margin-left: 5px;
+}
 .navSearch {
   font-size: 15px;
   background-color: rgba( 62, 126, 167, 0.8);
@@ -432,14 +442,13 @@ h3:hover {
   background-color: rgba( 62, 126, 167, 0.8);
   border-radius: 3px;
   cursor: pointer;
+  width: 10px;
 }
 .carousel::-webkit-scrollbar-button{
  width: 30px;
  background-color:rgb(26, 39, 55);
 }
-
 .carousel::-webkit-scrollbar-button:hover {
-  width: 30px;
   background-color: rgba( 62, 126, 167, 0.8);
  }
 
@@ -450,6 +459,7 @@ h3:hover {
 .hidden {
   display: none;
 }
+
 #full-screen {
   position:absolute;
   top:0;
@@ -461,7 +471,7 @@ h3:hover {
   background-color: rgba(0, 0, 0, 0.8)
 }
 
-.modal {
+/* .modal {
   background-attachment: scroll;
   background-clip: border-box;
   background-color: rgba(0,0,0,0);
@@ -484,9 +494,9 @@ h3:hover {
   left: 50%;
 
 
-}
+} */
 
-.modal img {
+/* .modal img {
   border-bottom-color: rgb(198, 212, 223);
   border-bottom-style: none;
   border-bottom-width: 0px;
@@ -509,16 +519,16 @@ h3:hover {
   display: inline;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
-  height: auto;
+  height: 100%;
   margin: 0px;
   max-height: 807px;
   max-width: 1237px;
   opacity: 1;
   padding: 0px;
-  width: 100%;
+  width: 1000px;
 
-}
-
+} */
+/*
 .modal-footer {
   display: flex;
   justify-content: space-between;
@@ -541,4 +551,4 @@ h3:hover {
 
   .modal-footer span {
     padding-top: 5px;
-  }
+  } */
