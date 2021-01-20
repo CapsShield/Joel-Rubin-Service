@@ -6,13 +6,16 @@ const sequelize = new Sequelize('vapor', 'root', null, {
 });
 
 
-
+console.log(photoSeed)
 sequelize.sync({ force: true }).then(() => {
   console.log("synced")
 })
-  .then(() => {
-    return Photos.destroy({ truncate: true })
-  })
+  // .then(() => {
+  //   return Games.bulkCreate(gameSeed)
+  // })
+  // .then(() => {
+  //   return Photos.destroy({ truncate: true })
+  // })
   .then(() => {
     return Photos.bulkCreate(photoSeed)
   })

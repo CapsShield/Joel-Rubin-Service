@@ -17,12 +17,33 @@ app.get('/api/games/:id/photo', (req, res) => {
       GameId: id
     }
   }).then((results) => {
-    res.send(results)
+    res.status(200).send(results)
   })
+    .catch((err) => {
+      res.status(404).send(err)
+    })
 })
 
-
-app.listen(port, () => {
-  console.log(`listening on localhost:${port}`)
+app.get('/api/games/:id/game', (req, res) => {
+  let id = req.params.id
+  console.log(id)
+  Games.findByPk(id)
+    .then((result) => {
+      res.status(200).send(result)
+    })
+    .catch((err) => {
+      res.status(404).send(err)
+    })
 })
+
+db.sync()
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`listening on localhost:${port}`)
+    })
+  })
+  .catch((err) => {
+    res.status(404).send(err)
+  })
+
 

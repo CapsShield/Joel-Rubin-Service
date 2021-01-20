@@ -1,6 +1,6 @@
 var faker = require('faker');
 
-let gameSeed = [];
+// let gameSeed = [];
 
 const seedGames = (array) => {
 
@@ -15,7 +15,18 @@ const seedGames = (array) => {
   }
 };
 
-seedGames(gameSeed);
+let gameSeed = [
+  {
+    name: 'Antichamber',
+    gameHeaderImageUrl: 'https://steamcdn-a.akamaihd.net/steam/apps/219890/header.jpg?t=1525832559',
+    gameSynopsis: 'Antichamber is a mind-bending psychological exploration game where nothing can be taken for granted. Discover an Escher-like world where hallways wrap around upon each other, spaces reconfigure themselves, and accomplishing the impossible may just be the only way forward.',
+    releaseDate: '01/31/2013',
+    developer: 'Alexander Bruce',
+    publisher: 'Demruth'
+  }
+]
+
+// seedGames(gameSeed);
 
 module.exports = gameSeed;
 console.log(gameSeed)
