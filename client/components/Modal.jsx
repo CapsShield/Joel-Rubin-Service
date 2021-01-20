@@ -15,13 +15,17 @@ class Modal extends React.Component {
     this.setState({
       photos: this.props.photos,
     });
+
+    // function () {
+    //   document.body.addEventListener('click', this.props.clickSet)
+    // }
   }
 
   incrementer() {
     if (!this.state.bigImg) {
       let nextNum = this.props.bigImg + 1;
       if (nextNum === this.props.photos.length) {
-        nextNum = 0;
+        nextNum = 1;
       }
       this.setState({
         bigImg: nextNum,
@@ -29,7 +33,7 @@ class Modal extends React.Component {
     } else if (this.state.bigImg) {
       let nextNum = this.state.bigImg + 1;
       if (nextNum === this.props.photos.length) {
-        nextNum = 0;
+        nextNum = 1;
       }
       this.setState({
         bigImg: nextNum,
@@ -72,7 +76,7 @@ class Modal extends React.Component {
             <button onClick={this.decrementer}>Prev</button>
             <span>
               {this.state.bigImg ? this.state.bigImg : this.props.bigImg} of{" "}
-              {this.props.photos.length} screenshots
+              {this.props.photos.length - 1} screenshots
             </span>
             <button onClick={this.incrementer}>Next</button>
           </div>
