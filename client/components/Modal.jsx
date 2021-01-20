@@ -39,20 +39,20 @@ class Modal extends React.Component {
 
   decrementer() {
     if (!this.state.bigImg) {
-      let nextNum = this.props.bigImg - 1;
-      if (nextNum < 0) {
-        nextNum = this.props.photos.length - 1;
+      let prevNum = this.props.bigImg - 1;
+      if (prevNum === 0) {
+        prevNum = this.props.photos.length - 1;
       }
       this.setState({
-        bigImg: nextNum,
+        bigImg: prevNum,
       });
     } else if (this.state.bigImg) {
-      let nextNum = this.state.bigImg - 1;
-      if (nextNum < 0) {
-        nextNum = this.props.photos.length - 1;
+      let prevNum = this.state.bigImg - 1;
+      if (prevNum === 0) {
+        prevNum = this.props.photos.length - 1;
       }
       this.setState({
-        bigImg: nextNum,
+        bigImg: prevNum,
       });
     }
   }
@@ -69,8 +69,12 @@ class Modal extends React.Component {
             }
           />
           <div className="modal-footer">
-            <button onClick={this.decrementer}>previous</button>
-            <button onClick={this.incrementer}>next</button>
+            <button onClick={this.decrementer}>Prev</button>
+            <span>
+              {this.state.bigImg ? this.state.bigImg : this.props.bigImg} of{" "}
+              {this.props.photos.length} screenshots
+            </span>
+            <button onClick={this.incrementer}>Next</button>
           </div>
         </div>
       );

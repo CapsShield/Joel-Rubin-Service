@@ -15,11 +15,11 @@ class GameCarousel extends React.Component {
     this.photoInterval = this.photoInterval.bind(this);
     this.autoScroll = this.autoScroll.bind(this);
     this.bigClickHandler = this.bigClickHandler.bind(this);
-    this.closeClicker = this.closeClicker.bind(this);
+    // this.closeClicker = this.closeClicker.bind(this);
   }
 
   componentDidMount() {
-    this.closeClicker();
+    // this.closeClicker();
     this.setState(
       {
         photos: this.props.photos,
@@ -78,15 +78,15 @@ class GameCarousel extends React.Component {
     });
     e.preventDefault();
   }
-  closeClicker(e) {
-    let modal = document.getElementById("modal-container");
-    window.onclick = function () {
-      if (e.target === modal) {
-        modal.style.display = "hidden";
-      }
-      e.preventDefault();
-    };
-  }
+  // closeClicker(e) {
+  //   let modal = document.getElementById("modal-container");
+  //   window.onclick = function () {
+  //     if (e.target === modal) {
+  //       modal.style.display = "hidden";
+  //     }
+  //     e.preventDefault();
+  //   };
+  // }
 
   render() {
     return (
