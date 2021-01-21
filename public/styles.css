@@ -1,5 +1,5 @@
 
-
+/*
 body {
   font-family: Arial, sans-serif;
   background-color: rgb(27, 40, 56);
@@ -9,15 +9,15 @@ body {
   background-position-y: -20%;
   background-repeat: no-repeat;
 
-}
+} */
 
-.header-container {
+/* .header-container {
   width: 100%;
   background-color: #171a21;
   height: 98px;
   z-index: 20;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
-}
+} */
 
 /* .header {
 
@@ -149,12 +149,12 @@ h3:hover {
   border: none;
 } */
 
-.nav-container {
+/* .nav-container {
   margin-top: 10px;
   display: grid;
   grid-template-rows: 22px 35px;
   width: 100%
-}
+} */
 
 .nav {
   margin: auto;
@@ -164,7 +164,7 @@ h3:hover {
   justify-content: flex-end;
 }
 
-
+/*
 .cart {
   color: #42520c;
   TEXT-align: center;
@@ -181,8 +181,8 @@ h3:hover {
 .cart:hover {
   BACKGROUND-color: #8cb105;
   color: black;
-}
-.search-content {
+} */
+/* .search-content {
   width: 940px;
   height: 35px;
   background-color: rgba( 62, 126, 167, 0.8);
@@ -192,13 +192,13 @@ h3:hover {
   grid-template-columns: 114px 100px 104px 66px 103px 218px 239px;
 
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
-}
+} */
 
-.game {
+/* .game {
   width: 100%;
   display: flex;
   justify-content: center;
-}
+} */
 
 .carousel-header {
   height: 100px;
@@ -234,7 +234,7 @@ h3:hover {
   font-size: 26px;
 }
 .game-container {
-  /* padding-top: 100px; */
+
   margin: auto;
   display: grid;
   grid-template-columns: 616px 324px;
@@ -262,7 +262,7 @@ h3:hover {
   cursor: pointer;
 }
 
-.blue:hover {
+/* .blue:hover {
   color: white;
 }
 
@@ -280,11 +280,11 @@ h3:hover {
 .tagButton:hover {
   color: white;
   background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
-}
-
+} */
+/*
 .date {
   color: #8f98a0;
-}
+} */
 
 .normal {
   size: cover;
@@ -373,7 +373,7 @@ h3:hover {
   padding-top: 5px;
 ;
 }
-.navButton:hover {
+/* .navButton:hover {
   background-color: #d9dadd;
   text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
   color: black;
@@ -396,20 +396,20 @@ h3:hover {
 }
 #b5 {
   border-right: 2.5px solid rgba(0, 0, 0, 0.25);
-}
+} */
 
-.img-nav {
+/* .img-nav {
   padding-top: 5px;
   cursor: text;
-}
+} */
 
-.user-tags {
+/* .user-tags {
   padding-top: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-}
+} */
 
 
 .carousel {

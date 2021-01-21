@@ -3,6 +3,8 @@ import Header from "./Header.jsx";
 import Nav from "./Nav.jsx";
 import GameCarousel from "./GameCarousel.jsx";
 import axios from "axios";
+import styled from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,15 +34,16 @@ class App extends React.Component {
     if (this.state.loaded) {
       return (
         <div>
-          <div className="header-container">
+          <GlobalStyle />
+          <HeaderContainer>
             <Header />
-          </div>
-          <div className="nav-container">
+          </HeaderContainer>
+          <NavContainer>
             <Nav />
-          </div>
-          <div className="game">
+          </NavContainer>
+          <GameContainer>
             <GameCarousel photos={this.state.photos} game={this.state.game} />
-          </div>
+          </GameContainer>
         </div>
       );
     } else {
@@ -53,4 +56,35 @@ class App extends React.Component {
   }
 }
 
+const GlobalStyle = createGlobalStyle`
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(27, 40, 56);
+  color: #dbe2e6;
+  background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
+  background-position-x: 50%;
+  background-position-y: -20%;
+  background-repeat: no-repeat;
+}`;
+
+const HeaderContainer = styled.div`
+  width: 100%;
+  background-color: #171a21;
+  height: 98px;
+  z-index: 20;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+`;
+
+const NavContainer = styled.div`
+  margin-top: 10px;
+  display: grid;
+  grid-template-rows: 22px 35px;
+  width: 100%;
+`;
+
+const GameContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 export default App;
