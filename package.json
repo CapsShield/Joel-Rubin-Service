@@ -11,7 +11,8 @@
     "build": "npx webpack -w",
     "start": "nodemon server",
     "seed": "node database/seed.js",
-    "test": "jest"
+    "test:fe": "jest --config ./jest.config.json",
+    "test:be": "mocha"
   },
   "dependencies": {
     "axios": "^0.21.1",
