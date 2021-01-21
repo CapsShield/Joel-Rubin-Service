@@ -127,6 +127,7 @@ class GameCarousel extends React.Component {
           </div>
           <div className="game-rev-container">
             <GameReview
+              recentReviews={this.props.recentReviews.data}
               reviews={this.props.reviews.data}
               game={this.props.game}
             />

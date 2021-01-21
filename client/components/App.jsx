@@ -12,9 +12,9 @@ class App extends React.Component {
     this.state = {
       photoId: 105,
       game: null,
-      loaded: false,
       photos: null,
       reviews: null,
+      recentReviews: null,
     };
   }
   componentDidMount() {
@@ -26,23 +26,29 @@ class App extends React.Component {
     axios.get(`api/games/${this.state.photoId}/game`).then((response) => {
       this.setState({
         game: response,
-        loaded: true,
       });
     });
     axios.get(`/api/games/${this.state.photoId}/reviews`).then((result) => {
-      console.log(result);
       this.setState({
         reviews: result,
       });
     });
+    axios
+      .get(`/api/games/${this.state.photoId}/recentReviews`)
+      .then((result) => {
+        console.log(result);
+        this.setState({
+          recentReviews: result,
+        });
+      });
   }
 
   renderView() {
     if (
-      this.state.loaded &&
       this.state.game &&
       this.state.photos &&
-      this.state.reviews
+      this.state.reviews &&
+      this.state.recentReviews
     ) {
       return (
         <div>
@@ -55,6 +61,7 @@ class App extends React.Component {
           </NavContainer>
           <GameContainer>
             <GameCarousel
+              recentReviews={this.state.recentReviews}
               reviews={this.state.reviews}
               photos={this.state.photos}
               game={this.state.game}

@@ -3,34 +3,80 @@ import moment from "moment";
 import styled from "styled-components";
 import axios from "axios";
 
-function GameReview({ game, reviews }) {
+function GameReview({ game, reviews, recentReviews }) {
   let format = moment(game.data.releaseDate).format("ll");
 
   let [totalReview, setTotalReview] = useState(0);
+  let [recentReview, setRecentReview] = useState(0);
 
   useEffect(() => {
-    getResults(reviews);
+    getAllResults(reviews);
+    getRecentResults(recentReviews);
   }, [reviews]);
 
-  const getResults = (array) => {
+  const getAllResults = (array) => {
     let sum = 0;
     array.forEach((game) => {
       if (game.pos_neg) {
-        sum += 1;
+        sum += 2;
       }
     });
-
+    console.log("sum:", sum);
     setTotalReview(sum);
   };
 
-  let reviewText = "";
+  const getRecentResults = (array) => {
+    let sum = 0;
+    let recentSlice = array.slice(0, 30);
+    recentSlice.forEach((game) => {
+      if (game.pos_neg) {
+        sum += 2;
+      }
+    });
+    setRecentReview(sum);
+  };
+  let reviewText;
   let percentage = totalReview / reviews.length;
-  if (percentage > 0.75) {
+  if (percentage >= 0.95) {
     reviewText = "Overwhelmingly Positive";
+  } else if (percentage >= 0.85) {
+    reviewText = "Very Positive";
+  } else if (percentage >= 0.8) {
+    reviewText = "Positive";
+  } else if (percentage >= 0.7) {
+    reviewText = "Mostly Positive";
   } else if (percentage >= 0.4) {
     reviewText = "Mixed";
   } else if (percentage >= 0.2) {
     reviewText = "Mostly Negative";
+  } else if (percentage >= 0.1) {
+    reviewText = "Overwhelmingly Negative";
+  } else if (percentage >= 0.05) {
+    reviewText = "Very Negative";
+  } else {
+    reviewText = "Negative";
+  }
+
+  let recentReviewText;
+  let recentPercentage = recentReview / recentReviews.length;
+  if (recentPercentage >= 0.95) {
+    recentReviewText = "Overwhelmingly Positive";
+  } else if (recentPercentage >= 0.85) {
+    recentReviewText = "Very Positive";
+  } else if (recentPercentage >= 0.8) {
+    recentReviewText = "Positive";
+  } else if (recentPercentage >= 0.7) {
+    recentReviewText = "Mostly Positive";
+  } else if (recentPercentage >= 0.4) {
+    recentReviewText = "Mixed";
+  } else if (recentPercentage >= 0.2) {
+    recentReviewText = "Mostly Negative";
+  } else if (recentPercentage >= 0.1) {
+    recentReviewText = "Overwhelmingly Negative";
+  } else if (recentPercentage >= 0.05) {
+    recentReviewText = "Very Negative";
+  } else {
+    recentReviewText = "Negative";
   }
 
   return (
@@ -42,16 +88,32 @@ function GameReview({ game, reviews }) {
         <GameSpan>{game.data.gameSynopsis}</GameSpan>
       </GameSynopsis>
       <ReviewTable>
-        <div>RECENT REVIEWS: </div>
-        <Blue>{`${reviewText} (${totalReview})`}</Blue>
-        <div>ALL REVIEWS:</div>
-        <Blue>{`${reviewText} (${reviews.length})`}</Blue>
+        <ToolTip>
+          RECENT REVIEWS:
+          <ToolTipText>{`${Math.floor(recentPercentage * 100)}% of the ${
+            recentReviews.length
+          } user reviews in the last 30 days are positive`}</ToolTipText>
+        </ToolTip>
+
+        <ReviewText
+          score={recentReviewText}
+        >{`${recentReviewText} (${recentReviews.length})`}</ReviewText>
+        <ToolTip>
+          ALL REVIEWS:
+          <ToolTipText>{`${Math.floor(percentage * 100)}% of the ${
+            reviews.length
+          } user reviews for this game are positive`}</ToolTipText>
+        </ToolTip>
+
+        <ReviewText
+          score={reviewText}
+        >{`${reviewText} (${reviews.length})`}</ReviewText>
         <div>RELEASE DATE:</div>
         <Gray>{format}</Gray>
         <div>DEVELOPER: </div>
-        <Blue>{game.data.developer}</Blue>
+        <BlueText>{game.data.developer}</BlueText>
         <div>PUBLISHER: </div>
-        <Blue>{game.data.publisher}</Blue>
+        <BlueText>{game.data.publisher}</BlueText>
       </ReviewTable>
 
       <div>
@@ -98,8 +160,24 @@ const ReviewTable = styled.div`
   grid-template-columns: 104px 220px;
 `;
 
-const Blue = styled.span`
+const ReviewText = styled.span`
+  color: ${(props) => {
+    if (props.score === "Positive") {
+      return "#66C0F4";
+    } else if (props.score === "Mixed") {
+      return "#A8926A";
+    } else {
+      return "#66c0f4";
+    }
+  }};
+
+  font-size: 12px;
+  cursor: pointer;
+`;
+
+const BlueText = styled.span`
   color: #66c0f4;
+
   font-size: 12px;
   cursor: pointer;
 
@@ -107,7 +185,6 @@ const Blue = styled.span`
     color: white;
   }
 `;
-
 const Gray = styled.span`
   color: #8f98a0;
 `;
@@ -133,6 +210,38 @@ const UserTags = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+`;
+
+const ToolTip = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 400px;
+`;
+
+const ToolTipText = styled.span`
+  font-family: Arial;
+  visibility: hidden;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0);
+  box-shadow rgb(0, 0, 0) 0px 0px 5px 0px;
+  color: black;
+  z-index: 99;
+  bottom: -50%;
+  left: 50%;
+  border-radius: 3px;
+  margin-left: -60px;
+
+  background-image linear-gradient(rgb(227, 234, 239) 5%, rgb(199, 213, 224) 95%);
+  background-size: auto;
+  font-size: 12px;
+  padding: 5px;
+
+  ${ToolTip}:hover & {
+    visibility: visible;
+  }
+  ${ReviewText}:hover & {
+    visibility: visible;
+  }
 `;
 
 export default GameReview;
