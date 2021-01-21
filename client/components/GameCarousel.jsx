@@ -126,7 +126,10 @@ class GameCarousel extends React.Component {
             </div>
           </div>
           <div className="game-rev-container">
-            <GameReview game={this.props.game} />
+            <GameReview
+              reviews={this.props.reviews.data}
+              game={this.props.game}
+            />
           </div>
           <div
             id="full-screen"

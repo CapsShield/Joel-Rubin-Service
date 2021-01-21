@@ -36,6 +36,18 @@ app.get('/api/games/:id/game', (req, res) => {
     })
 })
 
+app.get('/api/games/:id/reviews', (req, res) => {
+  let id = req.params.id
+  Reviews.findAll({
+    where: {
+      GameId: id
+    }
+  })
+    .then((result) => {
+      res.status(200).send(result)
+    })
+})
+
 db.sync()
   .then(() => {
     app.listen(port, () => {

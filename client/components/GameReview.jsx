@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import styled from "styled-components";
+import axios from "axios";
 
-function GameReview({ game }) {
+function GameReview({ game, reviews }) {
   let format = moment(game.data.releaseDate).format("ll");
+
+  let [totalReview, setTotalReview] = useState(0);
+
+  useEffect(() => {
+    getResults(reviews);
+  }, [reviews]);
+
+  const getResults = (array) => {
+    let sum = 0;
+    array.forEach((game) => {
+      if (game.pos_neg) {
+        sum += 1;
+      }
+    });
+
+    setTotalReview(sum);
+  };
+
+  let reviewText = "";
+  let percentage = totalReview / reviews.length;
+  if (percentage > 0.75) {
+    reviewText = "Overwhelmingly Positive";
+  } else if (percentage >= 0.4) {
+    reviewText = "Mixed";
+  } else if (percentage >= 0.2) {
+    reviewText = "Mostly Negative";
+  }
 
   return (
     <Main>
@@ -15,9 +43,9 @@ function GameReview({ game }) {
       </GameSynopsis>
       <ReviewTable>
         <div>RECENT REVIEWS: </div>
-        <Blue>Overwhelmingly Positive</Blue>
+        <Blue>{`${reviewText} (${totalReview})`}</Blue>
         <div>ALL REVIEWS:</div>
-        <Blue>Overwhelmingly Positive</Blue>
+        <Blue>{`${reviewText} (${reviews.length})`}</Blue>
         <div>RELEASE DATE:</div>
         <Gray>{format}</Gray>
         <div>DEVELOPER: </div>

@@ -8,8 +8,6 @@ import GameReview from "../GameReview.jsx";
 import Nav from "../Nav.jsx";
 import Modal from "../Modal.jsx"
 
-
-
 /*
 App Tests:
 1) need to test that information is received from API calls

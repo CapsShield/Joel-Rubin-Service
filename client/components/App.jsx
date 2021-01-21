@@ -14,6 +14,7 @@ class App extends React.Component {
       game: null,
       loaded: false,
       photos: null,
+      reviews: null,
     };
   }
   componentDidMount() {
@@ -28,10 +29,21 @@ class App extends React.Component {
         loaded: true,
       });
     });
+    axios.get(`/api/games/${this.state.photoId}/reviews`).then((result) => {
+      console.log(result);
+      this.setState({
+        reviews: result,
+      });
+    });
   }
 
   renderView() {
-    if (this.state.loaded) {
+    if (
+      this.state.loaded &&
+      this.state.game &&
+      this.state.photos &&
+      this.state.reviews
+    ) {
       return (
         <div>
           <GlobalStyle />
@@ -42,12 +54,17 @@ class App extends React.Component {
             <Nav />
           </NavContainer>
           <GameContainer>
-            <GameCarousel photos={this.state.photos} game={this.state.game} />
+            <GameCarousel
+              reviews={this.state.reviews}
+              photos={this.state.photos}
+              game={this.state.game}
+            />
           </GameContainer>
         </div>
       );
     } else {
-      return <div>Loading</div>;
+      return;
+      <Loading>Loading</Loading>;
     }
   }
 
@@ -66,6 +83,13 @@ body {
   background-position-y: -20%;
   background-repeat: no-repeat;
 }`;
+
+const Loading = styled.div`
+  background-color: black;
+  color: white;
+  font-family: helvetica;
+  font-size: 100px;
+`;
 
 const HeaderContainer = styled.div`
   width: 100%;
