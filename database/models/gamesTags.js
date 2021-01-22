@@ -8,7 +8,8 @@ const GamesTags = sequelize.define('GamesTags', {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true
-  }
+  },
+  test: Sequelize.STRING,
 
 }, { timestamps: false });
 

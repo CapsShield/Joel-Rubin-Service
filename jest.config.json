@@ -1,0 +1,3 @@
+{
+  "setupFilesAfterEnv": ["<rootDir>client/components/tests/App.test.js"]
+}

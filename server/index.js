@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const { Op } = require('sequelize')
+const moment = require('moment')
 const db = require('../database').sequelize
 const { Games, GamesTags, Photos, Reviews, UserTags } = require('../database')
 const port = 3000
@@ -33,6 +35,40 @@ app.get('/api/games/:id/game', (req, res) => {
     })
     .catch((err) => {
       res.status(404).send(err)
+    })
+})
+
+
+// get all reviews sorted in desc order //
+
+app.get('/api/games/:id/reviews', (req, res) => {
+  let id = req.params.id
+  Reviews.findAll({
+    where: {
+      GameId: id
+    },
+    order: [
+      ['date', 'DESC'],
+    ],
+  })
+    .then((result) => {
+      res.status(200).send(result)
+    })
+})
+
+//only get reviews from last 30 days //
+
+app.get('/api/games/:id/recentReviews', (req, res) => {
+  let id = req.params.id;
+  Reviews.findAll({
+    where: {
+      date: {
+        [Op.gte]: moment().subtract(30, 'days').toDate()
+      }
+    }
+  })
+    .then((result) => {
+      res.status(200).send(result)
     })
 })
 
