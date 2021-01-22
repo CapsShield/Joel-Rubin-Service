@@ -27,12 +27,12 @@ function GameReview({ game, reviews, recentReviews }) {
 
   const getRecentResults = (array) => {
     let sum = 0;
-    let recentSlice = array.slice(0, 30);
-    recentSlice.forEach((game) => {
+    recentReviews.forEach((game) => {
       if (game.pos_neg) {
         sum += 2;
       }
     });
+    console.log("recentSum:", sum);
     setRecentReview(sum);
   };
   let reviewText;
@@ -50,11 +50,11 @@ function GameReview({ game, reviews, recentReviews }) {
   } else if (percentage >= 0.2) {
     reviewText = "Mostly Negative";
   } else if (percentage >= 0.1) {
-    reviewText = "Overwhelmingly Negative";
+    reviewText = "Negative";
   } else if (percentage >= 0.05) {
     reviewText = "Very Negative";
   } else {
-    reviewText = "Negative";
+    reviewText = "Overwhelmingly Negative";
   }
 
   let recentReviewText;
@@ -72,11 +72,11 @@ function GameReview({ game, reviews, recentReviews }) {
   } else if (recentPercentage >= 0.2) {
     recentReviewText = "Mostly Negative";
   } else if (recentPercentage >= 0.1) {
-    recentReviewText = "Overwhelmingly Negative";
+    recentReviewText = "Negative";
   } else if (recentPercentage >= 0.05) {
     recentReviewText = "Very Negative";
   } else {
-    recentReviewText = "Negative";
+    recentReviewText = "Overwhelmingly Negative";
   }
 
   return (
@@ -105,14 +105,14 @@ function GameReview({ game, reviews, recentReviews }) {
           } user reviews for this game are positive`}</ToolTipText>
         </ToolTip>
 
-        <ReviewText
-          score={reviewText}
-        >{`${reviewText} (${reviews.length})`}</ReviewText>
-        <div>RELEASE DATE:</div>
+        <ReviewText length={reviews.length} score={reviewText}>
+          {`${reviewText} (${reviews.length})`}
+        </ReviewText>
+        <Gray>RELEASE DATE:</Gray>
         <Gray>{format}</Gray>
-        <div>DEVELOPER: </div>
+        <Gray>DEVELOPER: </Gray>
         <BlueText>{game.data.developer}</BlueText>
-        <div>PUBLISHER: </div>
+        <Gray>PUBLISHER: </Gray>
         <BlueText>{game.data.publisher}</BlueText>
       </ReviewTable>
 
@@ -151,6 +151,8 @@ const GameSynopsis = styled.div`
 const GameSpan = styled.span`
   font-size: 13px;
   color: #c6d4df;
+  padding-right: 10px;
+  line-height: 18px;
 `;
 
 const ReviewTable = styled.div`
@@ -158,6 +160,7 @@ const ReviewTable = styled.div`
   color: #556772;
   display: grid;
   grid-template-columns: 104px 220px;
+  padding-top: 10px;
 `;
 
 const ReviewText = styled.span`
@@ -170,7 +173,7 @@ const ReviewText = styled.span`
       return "#66c0f4";
     }
   }};
-
+  padding-top: 10px;
   font-size: 12px;
   cursor: pointer;
 `;
@@ -180,13 +183,14 @@ const BlueText = styled.span`
 
   font-size: 12px;
   cursor: pointer;
-
+  padding-top: 10px;
   &:hover {
     color: white;
   }
 `;
 const Gray = styled.span`
-  color: #8f98a0;
+  color: rgb(85, 103, 114);
+  padding-top: 10px;
 `;
 
 const TagButton = styled.button`
@@ -216,31 +220,41 @@ const ToolTip = styled.div`
   position: relative;
   display: inline-block;
   width: 400px;
+  color: rgb(85, 103, 114);
+  padding-top: 10px;
 `;
 
 const ToolTipText = styled.span`
   font-family: Arial;
   visibility: hidden;
-  width: auto;
+  width: 200px;
   background-color: rgba(0, 0, 0, 0);
   box-shadow rgb(0, 0, 0) 0px 0px 5px 0px;
-  color: black;
+  color: rgb(85, 103, 114)
   z-index: 99;
-  bottom: -50%;
-  left: 50%;
+  font-size: 12px;
+  bottom: 125%;
+  left: 15%;
   border-radius: 3px;
   margin-left: -60px;
-
+  position: absolute;
   background-image linear-gradient(rgb(227, 234, 239) 5%, rgb(199, 213, 224) 95%);
   background-size: auto;
   font-size: 12px;
-  padding: 5px;
+  padding: 5px 40px 5px 5px;
+  cursor: pointer;
+  opacity: 0;
+
 
   ${ToolTip}:hover & {
     visibility: visible;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
   }
   ${ReviewText}:hover & {
     visibility: visible;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
   }
 `;
 

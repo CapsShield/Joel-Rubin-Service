@@ -77,6 +77,7 @@ const RowOneButton = styled.button`
   color: #dbe2e6;
   margin-top: 5px;
   font-size: 11px;
+  padding: 5px;
 `;
 
 const RowOne = styled.div`
@@ -111,7 +112,7 @@ const HeaderButtonDropDown = styled.button`
   background-color: #171a21;
   outline: none;
   cursor: pointer;
-  color: #dbe2e6;
+  color: #c4cace;
   border: none;
   &:hover {
     color: #f2f8fc;
@@ -122,7 +123,7 @@ const HeaderButton = styled.button`
   background-color: #171a21;
   outline: none;
   cursor: pointer;
-  color: #dbe2e6;
+  color: #c4cace;
   border: none;
   &: hover {
     color: #f2f8fc;

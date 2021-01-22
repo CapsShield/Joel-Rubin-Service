@@ -20,7 +20,9 @@ function Nav() {
         <NavButton>News</NavButton>
         <NavButton>Vapor Labs</NavButton>
         <div></div>
-        <NavImg src="https://steamstore-a.akamaihd.net/public/images/v6/store_header_search.png?v=1" />
+        <SearchDiv>
+          <SearchInput placeholder="search the store"></SearchInput>
+        </SearchDiv>
       </SearchContent>
     </div>
   );
@@ -45,7 +47,7 @@ const CartButton = styled.button`
   outline: none;
   border: none;
   border-radius: 2px;
-
+  visibility: hidden;
   &: hover {
     background-color: #8cb105;
     color: black;
@@ -86,6 +88,39 @@ const NavButton = styled.button`
 const NavImg = styled.img`
 padding-top: 5px;
 cursor: text:
+`;
+
+const SearchDiv = styled.div`
+margin-top: 2px;
+  appearance: text-field;
+  background-color: #316282;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.2)
+  cursor: text;
+  z-index: 150;
+  width: 216px;
+  height: 30px;
+  position: relative;
+  background-image: url("https://steamstore-a.akamaihd.net/public/images/v6/store_header_search.png?v=1");
+
+`;
+
+const SearchInput = styled.input`
+  color: black;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.1);
+  margin-left: 5px;
+  font-weight: 300;
+  font-style: italic;
+  border: none;
+  background-color: transparent;
+  width: 180px;
+  outline: none;
+  line-height: 26px;
+
+  &::placeholder {
+    color: black;
+  }
 `;
 
 export default Nav;
