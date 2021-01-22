@@ -10,11 +10,11 @@ function Nav() {
       <SearchContent>
         <NavButton>
           Your Store
-          <i className="fas fa-caret-down"></i>
+          <I className="fas fa-caret-down"></I>
         </NavButton>
         <NavButton>
           Browse
-          <i className="fas fa-caret-down"></i>
+          <I className="fas fa-caret-down"></I>
         </NavButton>
         <NavButton>Points Shop</NavButton>
         <NavButton>News</NavButton>
@@ -85,6 +85,10 @@ const NavButton = styled.button`
   }
 `;
 
+const I = styled.i`
+  margin-left: 10px;
+`;
+
 const NavImg = styled.img`
 padding-top: 5px;
 cursor: text:
@@ -98,7 +102,7 @@ margin-top: 2px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.2)
   cursor: text;
-  z-index: 150;
+  z-index: 2;
   width: 216px;
   height: 30px;
   position: relative;
@@ -117,6 +121,7 @@ const SearchInput = styled.input`
   width: 180px;
   outline: none;
   line-height: 26px;
+  z-index: 3;
 
   &::placeholder {
     color: black;

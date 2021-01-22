@@ -8,13 +8,13 @@ function Header() {
         <div></div>
         <div>
           <RowOneButton install>
-            <img src="https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1" />
+            <Img src="https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1" />
             Install Vapor
           </RowOneButton>
           <RowOneButton id="login">login</RowOneButton>
           <RowOneButton id="language">
             language
-            <i className="fas fa-caret-down"></i>
+            <I className="fas fa-caret-down"></I>
           </RowOneButton>
         </div>
       </RowOne>
@@ -78,6 +78,11 @@ const RowOneButton = styled.button`
   margin-top: 5px;
   font-size: 11px;
   padding: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: #f2f8fc;
+  }
 `;
 
 const RowOne = styled.div`
@@ -146,6 +151,14 @@ const DropDownContent = styled.div`
     display: block;
     border: none;
   }
+`;
+
+const I = styled.i`
+  margin-left: 8px;
+`;
+
+const Img = styled.img`
+  margin-right: 5px;
 `;
 
 export default Header;

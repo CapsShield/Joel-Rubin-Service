@@ -259,7 +259,7 @@ const Carousel = styled.div`
   }
 
   &::-webkit-scrollbar-button:horizontal:decrement {
-    width: 100px;
+    width: 50px;
     background-color: rgb(26, 39, 55);
     border-radius: 3px;
   }
