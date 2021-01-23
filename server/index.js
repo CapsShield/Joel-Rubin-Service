@@ -72,6 +72,21 @@ app.get('/api/games/:id/recentReviews', (req, res) => {
     })
 })
 
+app.get('/api/games/:id/userTags', (req, res) => {
+  let id = req.params.id;
+  UserTags.findAll({
+    include: {
+      model: Games,
+      attributes: [],
+      where: {
+        id: id
+      }
+    },
+  }).then((result) => {
+    res.status(200).send(result)
+  })
+})
+
 db.sync()
   .then(() => {
     app.listen(port, () => {

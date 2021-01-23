@@ -8,14 +8,69 @@ function Nav() {
         <CartButton>CART(1)</CartButton>
       </Main>
       <SearchContent>
-        <NavButton>
-          Your Store
-          <I className="fas fa-caret-down"></I>
-        </NavButton>
-        <NavButton>
-          Browse
-          <I className="fas fa-caret-down"></I>
-        </NavButton>
+        <DropDown>
+          <NavButton>
+            Your Store
+            <I className="fas fa-caret-down"></I>
+          </NavButton>
+          <DropDownContent>
+            <DropSpan home>Home</DropSpan>
+
+            <DropSpan>Community Recommendations</DropSpan>
+            <DropSpan>Recently Viewed</DropSpan>
+            <DropSpan>Vapor Curators</DropSpan>
+          </DropDownContent>
+        </DropDown>
+        <DropDown>
+          <NavButton>
+            Browse
+            <I className="fas fa-caret-down"></I>
+          </NavButton>
+          <BrowseDropContent>
+            <ColumnOne>
+              <DropSpan>Free to Play</DropSpan>
+              <DropSpan>Early Access</DropSpan>
+              <DropSpan>Demos</DropSpan>
+              <DropSpan>Controller Friendly</DropSpan>
+              <DropSpan>For PC Cafes</DropSpan>
+              <DropSpan>Remote Play</DropSpan>
+              <BlueText>Virtual Reality</BlueText>
+              <DropSpan>VR Games & Experiences</DropSpan>
+              <DropSpan>VR Hardware</DropSpan>
+              <BlueText>Platforms</BlueText>
+              <DropSpan>Mac OS X</DropSpan>
+              <DropSpan>VaporOS + Linux</DropSpan>
+              <BlueText>Additional Content</BlueText>
+              <DropSpan>Soundtracks</DropSpan>
+            </ColumnOne>
+            <ColumnTwo>
+              <BlueText>Game Genres</BlueText>
+              <DropSpan>Action</DropSpan>
+              <DropSpan>Adventure</DropSpan>
+              <DropSpan>Casual</DropSpan>
+              <DropSpan>Indie</DropSpan>
+              <DropSpan>Massively Multiplayer</DropSpan>
+              <DropSpan>Racing</DropSpan>
+              <DropSpan>RPG</DropSpan>
+              <DropSpan>Simulation</DropSpan>
+              <DropSpan>Sports</DropSpan>
+              <DropSpan>Strategy</DropSpan>
+              <DropSpan>More Popular Tags...</DropSpan>
+            </ColumnTwo>
+            <ColumnThree>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+              <DropSpan></DropSpan>
+            </ColumnThree>
+          </BrowseDropContent>
+        </DropDown>
         <NavButton>Points Shop</NavButton>
         <NavButton>News</NavButton>
         <NavButton>Vapor Labs</NavButton>
@@ -77,11 +132,15 @@ const NavButton = styled.button`
   height: 35px;
   cursor: pointer;
   border-right: 2.5px solid rgba(0, 0, 0, 0.25);
-
+  width: 100%;
   &: hover {
-    background-color: #d9dadd;
+    background-color: #c6d4df;
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.25);
     color: black;
+  }
+
+  ${DropDown}:hover & {
+    background-color: #c6d4df;
   }
 `;
 
@@ -128,4 +187,100 @@ const SearchInput = styled.input`
   }
 `;
 
+const DropDown = styled.div`
+  position: relative;
+  display: inline-block;
+  &:hover > ${NavButton} {
+    background-color: #c6d4df;
+    color: black;
+  }
+`;
+
+const DropDownContent = styled.div`
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #c6d4df;
+  z-index: 99;
+  cursor: pointer;
+  transition: 1s;
+  color: black;
+  font-size: 13px;
+  line-height: 20px;
+  text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+
+  width: 250px;
+  opacity: 0;
+  ${DropDown}:hover & {
+    display: ${(props) => (props.browse ? "grid" : "flex")};
+    flex-direction: column;
+    border: none;
+    opacity: 1;
+    transition: all 0.8s ease-in-out;
+  }
+`;
+
+const BrowseDropContent = styled.div`
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #c6d4df;
+  z-index: 99;
+  cursor: pointer;
+  transition: 1s;
+  color: black;
+  font-size: 13px;
+  line-height: 20px;
+  text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+  width: auto
+
+  opacity: 0;
+  width: auto
+  opacity: 0;
+  ${DropDown}:hover & {
+    display: grid;
+    flex-direction: column;
+    grid-template-columns: 200px 200px 200px;
+    border: none;
+    opacity: 1;
+    transition: all 0.8s ease-in-out;
+  }
+`;
+
+const DropSpan = styled.span`
+  margin: 2px 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 25px;
+  &:hover {
+    background-color: rgb(27, 40, 56);
+    color: #c6d4df;
+    text-shadow: none;
+  }
+`;
+
+const BlueText = styled.span`
+  color: #66c0f4;
+  padding-left: 25px;
+  font-size: 11px;
+  cursor: pointer;
+  padding-top: 10px;
+`;
+
+const ColumnOne = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ColumnTwo = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ColumnThree = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 export default Nav;

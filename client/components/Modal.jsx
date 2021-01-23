@@ -41,7 +41,7 @@ class Modal extends React.Component {
   decrementer() {
     if (!this.state.bigImg) {
       let prevNum = this.props.bigImg - 1;
-      if (prevNum === 0) {
+      if (prevNum <= 0) {
         prevNum = this.props.photos.length - 1;
       }
       this.setState({
@@ -49,7 +49,7 @@ class Modal extends React.Component {
       });
     } else if (this.state.bigImg) {
       let prevNum = this.state.bigImg - 1;
-      if (prevNum === 0) {
+      if (prevNum <= 0) {
         prevNum = this.props.photos.length - 1;
       }
       this.setState({

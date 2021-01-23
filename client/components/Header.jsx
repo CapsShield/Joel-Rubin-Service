@@ -11,8 +11,8 @@ function Header() {
             <Img src="https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1" />
             Install Vapor
           </RowOneButton>
-          <RowOneButton id="login">login</RowOneButton>
-          <RowOneButton id="language">
+          <RowOneButton login>login</RowOneButton>
+          <RowOneButton language>
             language
             <I className="fas fa-caret-down"></I>
           </RowOneButton>
@@ -26,22 +26,22 @@ function Header() {
         <DropDown>
           <HeaderButtonDropDown>STORE</HeaderButtonDropDown>
           <DropDownContent>
-            <h5>HOME</h5>
-            <h5>DISCOVERY QUEUE</h5>
-            <h5>WISHLIST</h5>
-            <h5>POINTS SHOP</h5>
-            <h5>NEWS</h5>
-            <h5>STATS</h5>
+            <DropH5>HOME</DropH5>
+            <DropH5>DISCOVERY QUEUE</DropH5>
+            <DropH5>WISHLIST</DropH5>
+            <DropH5>POINTS SHOP</DropH5>
+            <DropH5>NEWS</DropH5>
+            <DropH5>STATS</DropH5>
           </DropDownContent>
         </DropDown>
         <DropDown>
           <HeaderButtonDropDown>COMMUNITY</HeaderButtonDropDown>
           <DropDownContent>
-            <h5>HOME</h5>
-            <h5>DISCUSSIONS</h5>
-            <h5>WORKSHOP</h5>
-            <h5>MARKET</h5>
-            <h5>BROADCASTS</h5>
+            <DropH5>HOME</DropH5>
+            <DropH5>DISCUSSIONS</DropH5>
+            <DropH5>WORKSHOP</DropH5>
+            <DropH5>MARKET</DropH5>
+            <DropH5>BROADCASTS</DropH5>
           </DropDownContent>
         </DropDown>
         <DropDown>
@@ -74,10 +74,11 @@ const PageHeader = styled.div`
 const RowOneButton = styled.button`
   background: ${(props) => (props.install ? "#5C7310" : "#171a21")};
   border: none;
+  border-right: ${(props) => (props.login ? "1px solid white" : "none")};
   color: #dbe2e6;
   margin-top: 5px;
   font-size: 11px;
-  padding: 5px;
+  padding: ${(props) => (props.install ? "#5px" : "none")};
   cursor: pointer;
 
   &:hover {
@@ -136,7 +137,6 @@ const HeaderButton = styled.button`
 `;
 
 const DropDownContent = styled.div`
-  font-weight: 300;
   padding-left: 10px;
   text-align: left;
   display: none;
@@ -146,6 +146,7 @@ const DropDownContent = styled.div`
   z-index: 22;
   cursor: pointer;
   transition: 1s;
+  color: #c4cace;
 
   ${DropDown}:hover & {
     display: block;
@@ -159,6 +160,14 @@ const I = styled.i`
 
 const Img = styled.img`
   margin-right: 5px;
+`;
+
+const DropH5 = styled.h5`
+  font-weight: normal;
+  font-size: 11px;
+  &:hover {
+    color: white;
+  }
 `;
 
 export default Header;
