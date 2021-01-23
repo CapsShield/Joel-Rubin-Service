@@ -14,4 +14,4 @@ const seedReviews = (array) => {
 seedReviews(reviews);
 
 module.exports = reviews;
-console.log(reviews)
+

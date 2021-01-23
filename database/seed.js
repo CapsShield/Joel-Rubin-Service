@@ -6,7 +6,7 @@ const sequelize = new Sequelize('vapor', 'root', null, {
 });
 
 
-console.log(photoSeed)
+// console.log(photoSeed)
 sequelize.sync({ force: true }).then(() => {
   console.log("synced")
 })
@@ -20,8 +20,11 @@ sequelize.sync({ force: true }).then(() => {
   //   return Photos.bulkCreate(photoSeed)
   // })
 
+  .then(() => {
+    return GamesTags.bulkCreate(gamesTagsSeed)
+  })
   // .then(() => {
-  //   return GamesTags.bulkCreate(gamesTagsSeed)
+  //   return UserTags.bulkCreate(userTagSeed)
   // })
   .then(() => {
     process.exit()
@@ -37,9 +40,7 @@ sequelize.sync({ force: true }).then(() => {
       // .then(() => {
       //   return Reviews.bulkCreate(reviewSeed)
       // })
-      // .then(() => {
-      //   return UserTags.bulkCreate(userTagSeed)
-      // })
+
       // .then(() => {
       //   return GamesTags.bulkCreate(gamesTagsSeed)
       // })
