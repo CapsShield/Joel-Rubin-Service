@@ -8,14 +8,72 @@ function Nav() {
         <CartButton>CART(1)</CartButton>
       </Main>
       <SearchContent>
-        <NavButton>
-          Your Store
-          <I className="fas fa-caret-down"></I>
-        </NavButton>
-        <NavButton>
-          Browse
-          <I className="fas fa-caret-down"></I>
-        </NavButton>
+        <DropDown>
+          <NavButton>
+            Your Store
+            <I className="fas fa-caret-down"></I>
+          </NavButton>
+          <DropDownContent>
+            <DropSpan home>Home</DropSpan>
+            <EmptyDiv></EmptyDiv>
+            <DropSpan>Community Recommendations</DropSpan>
+            <DropSpan>Recently Viewed</DropSpan>
+            <DropSpan>Vapor Curators</DropSpan>
+          </DropDownContent>
+        </DropDown>
+        <DropDown>
+          <NavButton>
+            Browse
+            <I className="fas fa-caret-down"></I>
+          </NavButton>
+          <BrowseDropContent>
+            <ColumnOne>
+              <DropSpan>Free to Play</DropSpan>
+              <DropSpan>Early Access</DropSpan>
+              <DropSpan>Demos</DropSpan>
+              <DropSpan>Controller Friendly</DropSpan>
+              <DropSpan>For PC Cafes</DropSpan>
+              <DropSpan>Remote Play</DropSpan>
+              <EmptyDiv></EmptyDiv>
+              <BlueText col1>Virtual Reality</BlueText>
+              <DropSpan>VR Games & Experiences</DropSpan>
+              <DropSpan>VR Hardware</DropSpan>
+              <EmptyDiv></EmptyDiv>
+              <BlueText col1>Platforms</BlueText>
+              <DropSpan>Mac OS X</DropSpan>
+              <DropSpan>VaporOS + Linux</DropSpan>
+              <EmptyDiv></EmptyDiv>
+              <BlueText col1>Additional Content</BlueText>
+              <DropSpan>Soundtracks</DropSpan>
+            </ColumnOne>
+            <ColumnTwo>
+              <BlueText>Game Genres</BlueText>
+              <DropSpan>Action</DropSpan>
+              <DropSpan>Adventure</DropSpan>
+              <DropSpan>Casual</DropSpan>
+              <DropSpan>Indie</DropSpan>
+              <DropSpan>Massively Multiplayer</DropSpan>
+              <DropSpan>Racing</DropSpan>
+              <DropSpan>RPG</DropSpan>
+              <DropSpan>Simulation</DropSpan>
+              <DropSpan>Sports</DropSpan>
+              <DropSpan>Strategy</DropSpan>
+              <EmptyDiv></EmptyDiv>
+              <DropSpan pop>More Popular Tags...</DropSpan>
+            </ColumnTwo>
+            <ColumnThree>
+              <BlueText>Software</BlueText>
+              <DropSpan>Animation & Modeling</DropSpan>
+              <DropSpan>Audio Production</DropSpan>
+              <DropSpan>Design & Illustration</DropSpan>
+              <DropSpan>Education</DropSpan>
+              <DropSpan>Photo Editing</DropSpan>
+              <DropSpan>Utilities</DropSpan>
+              <DropSpan>Video Production</DropSpan>
+              <DropSpan>Web Publishing</DropSpan>
+            </ColumnThree>
+          </BrowseDropContent>
+        </DropDown>
         <NavButton>Points Shop</NavButton>
         <NavButton>News</NavButton>
         <NavButton>Vapor Labs</NavButton>
@@ -72,21 +130,28 @@ const NavButton = styled.button`
   color: #c4cace;
   outline: none;
   border: none;
-  padding-top: 5px;
+  padding-top: 3px;
   text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.25);
   height: 35px;
   cursor: pointer;
   border-right: 2.5px solid rgba(0, 0, 0, 0.25);
-
+  width: 100%;
   &: hover {
-    background-color: #d9dadd;
+    background-color: #c6d4df;
     text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.25);
     color: black;
+  }
+
+  ${DropDown}:hover & {
+    background-color: #c6d4df;
   }
 `;
 
 const I = styled.i`
   margin-left: 10px;
+  &:hover > ${NavButton} {
+    color: white;
+  }
 `;
 
 const NavImg = styled.img`
@@ -102,7 +167,6 @@ margin-top: 2px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.2)
   cursor: text;
-  z-index: 2;
   width: 216px;
   height: 30px;
   position: relative;
@@ -121,11 +185,116 @@ const SearchInput = styled.input`
   width: 180px;
   outline: none;
   line-height: 26px;
-  z-index: 3;
 
   &::placeholder {
     color: black;
   }
 `;
 
+const DropDown = styled.div`
+  position: relative;
+  display: inline-block;
+  &:hover > ${NavButton} {
+    background-color: #c6d4df;
+    color: black;
+  }
+`;
+
+const DropDownContent = styled.div`
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #c6d4df;
+  z-index: 99;
+  cursor: pointer;
+  transition: 1s;
+  color: black;
+  font-size: 12px;
+  line-height: 10px;
+  text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+
+  width: 215px;
+  opacity: 0;
+  ${DropDown}:hover & {
+    display: ${(props) => (props.browse ? "grid" : "flex")};
+    flex-direction: column;
+    border: none;
+    opacity: 1;
+    transition: all 0.8s ease-in-out;
+  }
+`;
+
+const BrowseDropContent = styled.div`
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #c6d4df;
+  z-index: 99;
+  cursor: pointer;
+  transition: 1s;
+  color: black;
+  font-size: 12px;
+  line-height: 10px;
+  text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
+  box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
+  width: auto
+  opacity: 0;
+  ${DropDown}:hover & {
+    display: grid;
+    flex-direction: column;
+    grid-template-columns: 180px 180px 180px;
+    border: none;
+    opacity: 1;
+    transition: all 0.8s ease-in-out;
+  }
+`;
+
+const DropSpan = styled.span`
+  margin: 2px 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+  &:hover {
+    background-color: rgb(27, 40, 56);
+    color: #c6d4df;
+    text-shadow: none;
+  }
+`;
+
+const BlueText = styled.span`
+  color: rgb(62, 126, 167);
+  padding-left: 5px;
+  font-size: 11px;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0px 10px;
+`;
+
+const ColumnOne = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid white;
+  margin: 10px 0px;
+`;
+
+const ColumnTwo = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid white;
+  margin: 10px 0px;
+`;
+
+const ColumnThree = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+`;
+
+const EmptyDiv = styled.div`
+  border-top: 1px white solid;
+  margin: 0px 5px;
+  padding-bottom: 5px;
+`;
 export default Nav;

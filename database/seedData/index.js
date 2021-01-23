@@ -1,5 +1,3 @@
-const faker = require('faker');
-
 const gameSeed = require('./gameSeed.js');
 const gamesTagsSeed = require('./gamesTagsSeed.js');
 const photoSeed = require('./photoSeed.js');

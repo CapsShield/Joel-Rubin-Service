@@ -1,13 +1,12 @@
 # Project Name
 
-> Project description
+Carousel and Game Review Cmponent
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/CapsShiel/Garrett-Rubinstein-Service
+  - https://github.com/CapsShield/TeamBuild
+
 
 ## Table of Contents
 
@@ -17,14 +16,18 @@
 
 ## Usage
 
-> Some usage instructions
+> Getting Started:
+run:
+NPM RUN BUILD to transpile JSX with webpack
+NPM START to initialize nodemon and create connection with server
+NPM SEED to seed database
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
-- etc
+
 
 ## Development
 

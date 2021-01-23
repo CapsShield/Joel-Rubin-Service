@@ -1,18 +1,5 @@
 const faker = require('faker');
 
-// let photos = [];
-
-
-// const seedReviews = (array) => {
-
-//   for (let i = 0; i < 100; i++) {
-//     var randomDesc = faker.commerce.productDescription();
-//     var randomUrl = faker.image.imageUrl();
-//     var randomNum = faker.random.number({ min: 1, max: 10 });
-//     array[i] = { description: randomDesc, photoUrl: randomUrl, GameId: randomNum };
-//   };
-// };
-
 let photos = [
   {
     description: 'antichamber photo', photoUrl: 'https://steamcdn-a.akamaihd.net/steam/apps/219890/ss_c02435ac01bff1e3af6c69e9ddeb77f6bf40caf2.1920x1080.jpg?t=1525832559', GameId: 105
@@ -46,7 +33,20 @@ let photos = [
   },
 ]
 
-// seedReviews(photos);
+
+const seedReviews = (array) => {
+
+  for (let i = 10; i < 100; i++) {
+    var randomDesc = faker.commerce.productDescription();
+    var randomUrl = faker.image.imageUrl();
+    var randomNum = faker.random.number({ min: 1, max: 10 });
+    array[i] = { description: randomDesc, photoUrl: randomUrl, GameId: randomNum };
+  };
+};
+
+
+
+seedReviews(photos);
 
 module.exports = photos;
-console.log(photos)
+

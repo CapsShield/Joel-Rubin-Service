@@ -7,6 +7,7 @@ import GameCarousel from "../GameCarousel.jsx";
 import GameReview from "../GameReview.jsx";
 import Nav from "../Nav.jsx";
 import Modal from "../Modal.jsx"
+import styled from "styled-components"
 
 /*
 App Tests:
@@ -40,12 +41,14 @@ describe("<Nav />", () => {
   it('renders children when passed in', () => {
     const wrapper = shallow((
       <Nav>
-        <i className="fas fa-caret-down"></i>
+        <I className="fas fa-caret-down"></I>
       </Nav>
     ));
-    expect(wrapper.contains(<i className="fas fa-caret-down"></i>)).to.equal(true);
+    expect(wrapper.contains(<I className="fas fa-caret-down"></I>)).to.equal(true);
   })
-})
+
+});
+
 
 
 // this test currently just checks for the presence of a div on the page

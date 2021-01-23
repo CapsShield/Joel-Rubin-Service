@@ -28,7 +28,6 @@ app.get('/api/games/:id/photo', (req, res) => {
 
 app.get('/api/games/:id/game', (req, res) => {
   let id = req.params.id
-  console.log(id)
   Games.findByPk(id)
     .then((result) => {
       res.status(200).send(result)
@@ -70,6 +69,21 @@ app.get('/api/games/:id/recentReviews', (req, res) => {
     .then((result) => {
       res.status(200).send(result)
     })
+})
+
+app.get('/api/games/:id/userTags', (req, res) => {
+  let id = req.params.id;
+  UserTags.findAll({
+    include: {
+      model: Games,
+      attributes: [],
+      where: {
+        id: id
+      }
+    },
+  }).then((result) => {
+    res.status(200).send(result)
+  })
 })
 
 db.sync()

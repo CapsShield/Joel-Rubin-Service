@@ -3,7 +3,7 @@ import moment from "moment";
 import styled from "styled-components";
 import axios from "axios";
 
-function GameReview({ game, reviews, recentReviews }) {
+function GameReview({ game, reviews, recentReviews, userTags }) {
   let format = moment(game.data.releaseDate).format("ll");
 
   let [totalReview, setTotalReview] = useState(0);
@@ -21,7 +21,6 @@ function GameReview({ game, reviews, recentReviews }) {
         sum += 2;
       }
     });
-    console.log("sum:", sum);
     setTotalReview(sum);
   };
 
@@ -32,7 +31,6 @@ function GameReview({ game, reviews, recentReviews }) {
         sum += 2;
       }
     });
-    console.log("recentSum:", sum);
     setRecentReview(sum);
   };
   let reviewText;
@@ -94,20 +92,22 @@ function GameReview({ game, reviews, recentReviews }) {
             recentReviews.length
           } user reviews in the last 30 days are positive`}</ToolTipText>
         </ToolTip>
-
-        <ReviewText
-          score={recentReviewText}
-        >{`${recentReviewText} (${recentReviews.length})`}</ReviewText>
+        <ReviewDiv>
+          <ReviewText score={recentReviewText}>{recentReviewText}</ReviewText>
+          <Gray>{`  (${recentReviews.length})`}</Gray>
+        </ReviewDiv>
         <ToolTip>
           ALL REVIEWS:
           <ToolTipText>{`${Math.floor(percentage * 100)}% of the ${
             reviews.length
           } user reviews for this game are positive`}</ToolTipText>
         </ToolTip>
-
-        <ReviewText length={reviews.length} score={reviewText}>
-          {`${reviewText} (${reviews.length})`}
-        </ReviewText>
+        <ReviewDiv>
+          <ReviewText length={reviews.length} score={reviewText}>
+            {reviewText}
+          </ReviewText>
+          <Gray>{`  (${reviews.length})`}</Gray>
+        </ReviewDiv>
         <Gray>RELEASE DATE:</Gray>
         <Gray>{format}</Gray>
         <Gray>DEVELOPER: </Gray>
@@ -119,11 +119,9 @@ function GameReview({ game, reviews, recentReviews }) {
       <div>
         Popular user-defined tags for this product:
         <UserTags>
-          <TagButton>Puzzle</TagButton>
-          <TagButton>First-Person</TagButton>
-          <TagButton>Indie</TagButton>
-          <TagButton>Surreal</TagButton>
-          <TagButton>Exploration</TagButton>
+          {userTags.map((tag, idx) => (
+            <TagButton key={idx}>{tag.tag}</TagButton>
+          ))}
           <TagButton>+</TagButton>
         </UserTags>
       </div>
@@ -147,6 +145,7 @@ const HeaderImage = styled.img`
 
 const GameSynopsis = styled.div`
   padding-top: 10px;
+  padding-right: 30px;
 `;
 const GameSpan = styled.span`
   font-size: 13px;
@@ -201,6 +200,7 @@ const TagButton = styled.button`
   border-radius: 2px;
   background: #67c1f533;
   padding: 0px 7px;
+  line-height: 19px;
 
   &: hover {
     color: white;
@@ -256,6 +256,10 @@ const ToolTipText = styled.span`
     opacity: 1;
     transition: all 0.2s ease-in-out;
   }
+`;
+
+const ReviewDiv = styled.div`
+  padding-top: 8px;
 `;
 
 export default GameReview;

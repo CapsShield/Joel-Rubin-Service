@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('vapor', 'root', null, {
-  host: 'localhost', dialect: 'mysql'
+  host: 'localhost', dialect: 'mysql', logging: false
 });
 
 const GamesTags = sequelize.define('GamesTags', {
@@ -9,7 +9,7 @@ const GamesTags = sequelize.define('GamesTags', {
     autoIncrement: true,
     primaryKey: true
   },
-  test: Sequelize.STRING,
+
 
 }, { timestamps: false });
 

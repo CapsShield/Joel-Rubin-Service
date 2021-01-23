@@ -15,6 +15,7 @@ class App extends React.Component {
       photos: null,
       reviews: null,
       recentReviews: null,
+      userTags: null,
     };
   }
   componentDidMount() {
@@ -36,11 +37,15 @@ class App extends React.Component {
     axios
       .get(`/api/games/${this.state.photoId}/recentReviews`)
       .then((result) => {
-        console.log(result);
         this.setState({
           recentReviews: result,
         });
       });
+    axios.get(`/api/games/${this.state.photoId}/userTags`).then((result) => {
+      this.setState({
+        userTags: result.data,
+      });
+    });
   }
 
   renderView() {
@@ -48,7 +53,8 @@ class App extends React.Component {
       this.state.game &&
       this.state.photos &&
       this.state.reviews &&
-      this.state.recentReviews
+      this.state.recentReviews &&
+      this.state.userTags
     ) {
       return (
         <div>
@@ -65,6 +71,7 @@ class App extends React.Component {
               reviews={this.state.reviews}
               photos={this.state.photos}
               game={this.state.game}
+              userTags={this.state.userTags}
             />
           </GameContainer>
         </div>
