@@ -6,26 +6,24 @@ const sequelize = new Sequelize('vapor', 'root', null, {
 });
 
 
-// console.log(photoSeed)
 sequelize.sync({ force: true }).then(() => {
   console.log("synced")
 })
-  // .then(() => {
-  //   return Games.bulkCreate(gameSeed)
-  // })
-  // .then(() => {
-  //   return Photos.destroy({ truncate: true })
-  // })
-  // .then(() => {
-  //   return Photos.bulkCreate(photoSeed)
-  // })
-
+  .then(() => {
+    return Games.bulkCreate(gameSeed)
+  })
+  .then(() => {
+    return Photos.bulkCreate(photoSeed)
+  })
   .then(() => {
     return GamesTags.bulkCreate(gamesTagsSeed)
   })
-  // .then(() => {
-  //   return UserTags.bulkCreate(userTagSeed)
-  // })
+  .then(() => {
+    return UserTags.bulkCreate(userTagSeed)
+  })
+  .then(() => {
+    return Reviews.bulkCreate(reviewSeed)
+  })
   .then(() => {
     process.exit()
   })
@@ -33,14 +31,3 @@ sequelize.sync({ force: true }).then(() => {
     console.error(err)
   });
 
-      // })
-      // .then(() => {
-      //   return Photos.bulkCreate(photoSeed)
-      // })
-      // .then(() => {
-      //   return Reviews.bulkCreate(reviewSeed)
-      // })
-
-      // .then(() => {
-      //   return GamesTags.bulkCreate(gamesTagsSeed)
-      // })

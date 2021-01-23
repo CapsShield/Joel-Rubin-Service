@@ -17,6 +17,8 @@ class GameCarousel extends React.Component {
     this.autoScroll = this.autoScroll.bind(this);
     this.bigClickHandler = this.bigClickHandler.bind(this);
     this.clickSet = this.clickSet.bind(this);
+    this.incrementer = this.incrementer.bind(this);
+    this.decrementer = this.decrementer.bind(this);
     // this.closeClicker = this.closeClicker.bind(this);
   }
 
@@ -91,6 +93,26 @@ class GameCarousel extends React.Component {
     }
   }
 
+  incrementer() {
+    let nextNum = this.state.bigImg + 1;
+    if (nextNum === this.state.photos.length) {
+      nextNum = 0;
+    }
+    this.setState({
+      bigImg: nextNum,
+    });
+  }
+
+  decrementer() {
+    let prevNum = this.state.bigImg - 1;
+    if (prevNum < 0) {
+      prevNum = this.state.photos.length - 1;
+    }
+    this.setState({
+      bigImg: prevNum,
+    });
+  }
+
   render() {
     return (
       <CarouselHeader>
@@ -148,6 +170,8 @@ class GameCarousel extends React.Component {
               }
             >
               <Modal
+                incrementer={this.incrementer}
+                decrementer={this.decrementer}
                 clicked={this.state.clicked}
                 clickSet={this.clickSet}
                 bigImg={this.state.bigImg}
@@ -304,7 +328,7 @@ const TinyImage = styled.img`
     props.status === "marquee" ? "0 0 0 5px rgb(172, 170, 170);" : "none;"}
 
   transition: ${(props) =>
-    props.status === "marquee" ? "0.2s ease;" : "none;"}
+    props.status === "marquee" ? "0.4s ease;" : "none;"}
 `;
 
 export default GameCarousel;

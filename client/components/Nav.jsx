@@ -15,7 +15,7 @@ function Nav() {
           </NavButton>
           <DropDownContent>
             <DropSpan home>Home</DropSpan>
-
+            <EmptyDiv></EmptyDiv>
             <DropSpan>Community Recommendations</DropSpan>
             <DropSpan>Recently Viewed</DropSpan>
             <DropSpan>Vapor Curators</DropSpan>
@@ -34,13 +34,16 @@ function Nav() {
               <DropSpan>Controller Friendly</DropSpan>
               <DropSpan>For PC Cafes</DropSpan>
               <DropSpan>Remote Play</DropSpan>
-              <BlueText>Virtual Reality</BlueText>
+              <EmptyDiv></EmptyDiv>
+              <BlueText col1>Virtual Reality</BlueText>
               <DropSpan>VR Games & Experiences</DropSpan>
               <DropSpan>VR Hardware</DropSpan>
-              <BlueText>Platforms</BlueText>
+              <EmptyDiv></EmptyDiv>
+              <BlueText col1>Platforms</BlueText>
               <DropSpan>Mac OS X</DropSpan>
               <DropSpan>VaporOS + Linux</DropSpan>
-              <BlueText>Additional Content</BlueText>
+              <EmptyDiv></EmptyDiv>
+              <BlueText col1>Additional Content</BlueText>
               <DropSpan>Soundtracks</DropSpan>
             </ColumnOne>
             <ColumnTwo>
@@ -55,19 +58,19 @@ function Nav() {
               <DropSpan>Simulation</DropSpan>
               <DropSpan>Sports</DropSpan>
               <DropSpan>Strategy</DropSpan>
-              <DropSpan>More Popular Tags...</DropSpan>
+              <EmptyDiv></EmptyDiv>
+              <DropSpan pop>More Popular Tags...</DropSpan>
             </ColumnTwo>
             <ColumnThree>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
-              <DropSpan></DropSpan>
+              <BlueText>Software</BlueText>
+              <DropSpan>Animation & Modeling</DropSpan>
+              <DropSpan>Audio Production</DropSpan>
+              <DropSpan>Design & Illustration</DropSpan>
+              <DropSpan>Education</DropSpan>
+              <DropSpan>Photo Editing</DropSpan>
+              <DropSpan>Utilities</DropSpan>
+              <DropSpan>Video Production</DropSpan>
+              <DropSpan>Web Publishing</DropSpan>
             </ColumnThree>
           </BrowseDropContent>
         </DropDown>
@@ -127,7 +130,7 @@ const NavButton = styled.button`
   color: #c4cace;
   outline: none;
   border: none;
-  padding-top: 5px;
+  padding-top: 3px;
   text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.25);
   height: 35px;
   cursor: pointer;
@@ -146,6 +149,9 @@ const NavButton = styled.button`
 
 const I = styled.i`
   margin-left: 10px;
+  &:hover > ${NavButton} {
+    color: white;
+  }
 `;
 
 const NavImg = styled.img`
@@ -161,7 +167,6 @@ margin-top: 2px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.2)
   cursor: text;
-  z-index: 2;
   width: 216px;
   height: 30px;
   position: relative;
@@ -180,7 +185,6 @@ const SearchInput = styled.input`
   width: 180px;
   outline: none;
   line-height: 26px;
-  z-index: 3;
 
   &::placeholder {
     color: black;
@@ -205,12 +209,12 @@ const DropDownContent = styled.div`
   cursor: pointer;
   transition: 1s;
   color: black;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 10px;
   text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
 
-  width: 250px;
+  width: 215px;
   opacity: 0;
   ${DropDown}:hover & {
     display: ${(props) => (props.browse ? "grid" : "flex")};
@@ -230,19 +234,16 @@ const BrowseDropContent = styled.div`
   cursor: pointer;
   transition: 1s;
   color: black;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 10px;
   text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
-  width: auto
-
-  opacity: 0;
   width: auto
   opacity: 0;
   ${DropDown}:hover & {
     display: grid;
     flex-direction: column;
-    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: 180px 180px 180px;
     border: none;
     opacity: 1;
     transition: all 0.8s ease-in-out;
@@ -253,7 +254,7 @@ const DropSpan = styled.span`
   margin: 2px 5px;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 25px;
+  padding-left: 10px;
   &:hover {
     background-color: rgb(27, 40, 56);
     color: #c6d4df;
@@ -262,25 +263,38 @@ const DropSpan = styled.span`
 `;
 
 const BlueText = styled.span`
-  color: #66c0f4;
-  padding-left: 25px;
+  color: rgb(62, 126, 167);
+  padding-left: 5px;
   font-size: 11px;
   cursor: pointer;
   padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0px 10px;
 `;
 
 const ColumnOne = styled.div`
   display: flex;
   flex-direction: column;
+  border-right: 1px solid white;
+  margin: 10px 0px;
 `;
 
 const ColumnTwo = styled.div`
   display: flex;
   flex-direction: column;
+  border-right: 1px solid white;
+  margin: 10px 0px;
 `;
 
 const ColumnThree = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 10px 0px;
+`;
+
+const EmptyDiv = styled.div`
+  border-top: 1px white solid;
+  margin: 0px 5px;
+  padding-bottom: 5px;
 `;
 export default Nav;

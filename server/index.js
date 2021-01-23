@@ -28,7 +28,6 @@ app.get('/api/games/:id/photo', (req, res) => {
 
 app.get('/api/games/:id/game', (req, res) => {
   let id = req.params.id
-  console.log(id)
   Games.findByPk(id)
     .then((result) => {
       res.status(200).send(result)

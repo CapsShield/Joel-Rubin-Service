@@ -4,78 +4,29 @@ import styled from "styled-components";
 class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      photos: null,
-      bigImg: null,
-    };
-    this.incrementer = this.incrementer.bind(this);
-    this.decrementer = this.decrementer.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({
-      photos: this.props.photos,
-    });
-  }
-
-  incrementer() {
-    if (!this.state.bigImg) {
-      let nextNum = this.props.bigImg + 1;
-      if (nextNum === this.props.photos.length) {
-        nextNum = 1;
-      }
-      this.setState({
-        bigImg: nextNum,
-      });
-    } else if (this.state.bigImg) {
-      let nextNum = this.state.bigImg + 1;
-      if (nextNum === this.props.photos.length) {
-        nextNum = 1;
-      }
-      this.setState({
-        bigImg: nextNum,
-      });
-    }
-  }
-
-  decrementer() {
-    if (!this.state.bigImg) {
-      let prevNum = this.props.bigImg - 1;
-      if (prevNum <= 0) {
-        prevNum = this.props.photos.length - 1;
-      }
-      this.setState({
-        bigImg: prevNum,
-      });
-    } else if (this.state.bigImg) {
-      let prevNum = this.state.bigImg - 1;
-      if (prevNum <= 0) {
-        prevNum = this.props.photos.length - 1;
-      }
-      this.setState({
-        bigImg: prevNum,
-      });
-    }
   }
 
   renderView() {
-    if (this.props.bigImg) {
+    if (this.props.bigImg !== null) {
       return (
         <Main>
-          <ModalImg
-            src={
-              this.state.bigImg
-                ? this.props.photos[this.state.bigImg].photoUrl
-                : this.props.photos[this.props.bigImg].photoUrl
-            }
-          />
+          <ModalImg src={this.props.photos[this.props.bigImg].photoUrl} />
           <ModalFooter>
-            <FooterButton onClick={this.decrementer}>Prev</FooterButton>
+            <FooterButton
+              onKeyDown={this.props.decrementer}
+              onClick={this.props.decrementer}
+            >
+              Prev
+            </FooterButton>
             <FooterSpan>
-              {this.state.bigImg ? this.state.bigImg : this.props.bigImg} of{" "}
-              {this.props.photos.length - 1} screenshots
+              {this.props.bigImg + 1} of {this.props.photos.length} screenshots
             </FooterSpan>
-            <FooterButton onClick={this.incrementer}>Next</FooterButton>
+            <FooterButton
+              onKeyDown={this.props.incrementer}
+              onClick={this.props.incrementer}
+            >
+              Next
+            </FooterButton>
           </ModalFooter>
         </Main>
       );

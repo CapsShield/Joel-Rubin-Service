@@ -145,6 +145,7 @@ const HeaderImage = styled.img`
 
 const GameSynopsis = styled.div`
   padding-top: 10px;
+  padding-right: 30px;
 `;
 const GameSpan = styled.span`
   font-size: 13px;
@@ -199,6 +200,7 @@ const TagButton = styled.button`
   border-radius: 2px;
   background: #67c1f533;
   padding: 0px 7px;
+  line-height: 19px;
 
   &: hover {
     color: white;
