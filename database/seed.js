@@ -2,7 +2,7 @@ const { Games, GamesTags, Photos, Reviews, UserTags } = require('./index.js');
 const { gameSeed, gamesTagsSeed, photoSeed, reviewSeed, userTagSeed } = require('./seedData/index.js')
 const Sequelize = require("sequelize")
 const sequelize = new Sequelize('vapor', 'root', null, {
-  host: 'localhost', dialect: 'mysql'
+  host: 'localhost', dialect: 'mysql', logging: false
 });
 
 
