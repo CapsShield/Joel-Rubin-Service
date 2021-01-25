@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import moment from "moment";
-import styled from "styled-components";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+import styled from 'styled-components';
+import axios from 'axios';
 
 function GameReview({ game, reviews, recentReviews, userTags }) {
-  let format = moment(game.data.releaseDate).format("ll");
+  let format = moment(game.data.releaseDate).format('ll');
 
   let [totalReview, setTotalReview] = useState(0);
   let [recentReview, setRecentReview] = useState(0);
@@ -36,45 +36,45 @@ function GameReview({ game, reviews, recentReviews, userTags }) {
   let reviewText;
   let percentage = totalReview / reviews.length;
   if (percentage >= 0.95) {
-    reviewText = "Overwhelmingly Positive";
+    reviewText = 'Overwhelmingly Positive';
   } else if (percentage >= 0.85) {
-    reviewText = "Very Positive";
+    reviewText = 'Very Positive';
   } else if (percentage >= 0.8) {
-    reviewText = "Positive";
+    reviewText = 'Positive';
   } else if (percentage >= 0.7) {
-    reviewText = "Mostly Positive";
+    reviewText = 'Mostly Positive';
   } else if (percentage >= 0.4) {
-    reviewText = "Mixed";
+    reviewText = 'Mixed';
   } else if (percentage >= 0.2) {
-    reviewText = "Mostly Negative";
+    reviewText = 'Mostly Negative';
   } else if (percentage >= 0.1) {
-    reviewText = "Negative";
+    reviewText = 'Negative';
   } else if (percentage >= 0.05) {
-    reviewText = "Very Negative";
+    reviewText = 'Very Negative';
   } else {
-    reviewText = "Overwhelmingly Negative";
+    reviewText = 'Overwhelmingly Negative';
   }
 
   let recentReviewText;
   let recentPercentage = recentReview / recentReviews.length;
   if (recentPercentage >= 0.95) {
-    recentReviewText = "Overwhelmingly Positive";
+    recentReviewText = 'Overwhelmingly Positive';
   } else if (recentPercentage >= 0.85) {
-    recentReviewText = "Very Positive";
+    recentReviewText = 'Very Positive';
   } else if (recentPercentage >= 0.8) {
-    recentReviewText = "Positive";
+    recentReviewText = 'Positive';
   } else if (recentPercentage >= 0.7) {
-    recentReviewText = "Mostly Positive";
+    recentReviewText = 'Mostly Positive';
   } else if (recentPercentage >= 0.4) {
-    recentReviewText = "Mixed";
+    recentReviewText = 'Mixed';
   } else if (recentPercentage >= 0.2) {
-    recentReviewText = "Mostly Negative";
+    recentReviewText = 'Mostly Negative';
   } else if (recentPercentage >= 0.1) {
-    recentReviewText = "Negative";
+    recentReviewText = 'Negative';
   } else if (recentPercentage >= 0.05) {
-    recentReviewText = "Very Negative";
+    recentReviewText = 'Very Negative';
   } else {
-    recentReviewText = "Overwhelmingly Negative";
+    recentReviewText = 'Overwhelmingly Negative';
   }
 
   return (
@@ -164,12 +164,12 @@ const ReviewTable = styled.div`
 
 const ReviewText = styled.span`
   color: ${(props) => {
-    if (props.score === "Positive") {
-      return "#66C0F4";
-    } else if (props.score === "Mixed") {
-      return "#A8926A";
+    if (props.score === 'Positive') {
+      return '#66C0F4';
+    } else if (props.score === 'Mixed') {
+      return '#A8926A';
     } else {
-      return "#66c0f4";
+      return '#66c0f4';
     }
   }};
   padding-top: 10px;
@@ -201,6 +201,7 @@ const TagButton = styled.button`
   background: #67c1f533;
   padding: 0px 7px;
   line-height: 19px;
+  cursor: pointer;
 
   &: hover {
     color: white;

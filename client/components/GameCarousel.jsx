@@ -1,7 +1,8 @@
-import React from "react";
-import GameReview from "./GameReview.jsx";
-import Modal from "./Modal.jsx";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import GameReview from './GameReview.jsx';
+import Modal from './Modal.jsx';
+import styled, { keyframes } from 'styled-components';
+import leftArrow from '/Users/joelrubin/Desktop/FEC/Joel-Rubin-Service/public/assets/leftArrow.png';
 
 class GameCarousel extends React.Component {
   constructor(props) {
@@ -19,7 +20,6 @@ class GameCarousel extends React.Component {
     this.clickSet = this.clickSet.bind(this);
     this.incrementer = this.incrementer.bind(this);
     this.decrementer = this.decrementer.bind(this);
-    // this.closeClicker = this.closeClicker.bind(this);
   }
 
   componentDidMount() {
@@ -49,25 +49,25 @@ class GameCarousel extends React.Component {
   }
 
   autoScroll() {
-    let elem = document.getElementById("photoCarousel");
+    let elem = document.getElementById('photoCarousel');
     if (this.state.i === 5) {
       elem.scrollBy({
         top: 0,
         left: 1000,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
     if (this.state.i === 0) {
       elem.scrollBy({
         top: 0,
         left: -1000,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   }
 
   clickHandler(e) {
-    let value = e.target.attributes["data-i"].value;
+    let value = e.target.attributes['data-i'].value;
     this.setState({
       i: Number(value),
     });
@@ -75,7 +75,7 @@ class GameCarousel extends React.Component {
   }
 
   bigClickHandler(e) {
-    let value = e.target.attributes["data-i"].value;
+    let value = e.target.attributes['data-i'].value;
     this.setState({
       bigImg: Number(value),
       clicked: true,
@@ -85,7 +85,7 @@ class GameCarousel extends React.Component {
 
   clickSet(e) {
     e.preventDefault();
-    let body = document.getElementById("full-screen");
+    let body = document.getElementById('full-screen');
     if (e.target === body) {
       this.setState({
         clicked: false,
@@ -135,11 +135,11 @@ class GameCarousel extends React.Component {
               />
             </div>
             <div></div>
-            <Carousel id="photoCarousel">
+            <Carousel id='photoCarousel'>
               {this.props.photos.map((photo, idx) => (
                 <TinyImage
                   src={photo.photoUrl}
-                  status={this.state.i === idx ? "marquee" : "normal"}
+                  status={this.state.i === idx ? 'marquee' : 'normal'}
                   data-i={idx}
                   onClick={this.clickHandler}
                   key={idx}
@@ -157,16 +157,16 @@ class GameCarousel extends React.Component {
             />
           </div>
           <FullScreen
-            id="full-screen"
+            id='full-screen'
             onClick={this.clickSet}
             style={
-              this.state.clicked ? { display: "block" } : { display: "none" }
+              this.state.clicked ? { display: 'block' } : { display: 'none' }
             }
           >
             <div
-              className="modal-container"
+              className='modal-container'
               style={
-                this.state.clicked ? { display: "block" } : { display: "none" }
+                this.state.clicked ? { display: 'block' } : { display: 'none' }
               }
             >
               <Modal
@@ -210,6 +210,7 @@ const CommunityButton = styled.button`
   outline: none;
   border: none;
   border-radius: 2px;
+  cursor: pointer;
 
   &: hover {
     color: white;
@@ -264,15 +265,17 @@ const Carousel = styled.div`
     display: block;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
-    width: 10px;
+    margin-top: 15px;
     margin-left: 5px;
   }
 
   &::-webkit-scrollbar-thumb {
     display: block;
-    background-color: rgb(26, 39, 55);
+    background-color: #192533;
+
     border-radius: 3px;
     cursor: pointer;
+    width: 10%;
   }
 
   &::-webkit-scrollbar-thumb:hover {
@@ -280,28 +283,34 @@ const Carousel = styled.div`
     background-color: rgba(62, 126, 167, 0.8);
     border-radius: 3px;
     cursor: pointer;
-    width: 10px;
   }
 
-  &::-webkit-scrollbar-button:horizontal:decrement {
-    width: 50px;
-    background-color: rgb(26, 39, 55);
+  &::-webkit-scrollbar-button:horizontal:decrement:start {
+    width: 37px;
+    background-color: #192533;
+    margin-top: 15px;
     border-radius: 3px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Caret_left_font_awesome.svg/512px-Caret_left_font_awesome.svg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   &::-webkit-scrollbar-button:horizontal:decrement:hover {
     background-color: rgba(62, 126, 167, 0.8);
   }
 
-  // /* Right */
-  // &::-webkit-scrollbar-button:horizontal:increment {
-  //   width: 30px;
-  //   background-color: rgb(26, 39, 55);
-  // }
+  /* Right */
+  &::-webkit-scrollbar-button:horizontal:increment:end {
+    width: 37px;
+    background-color: #192533;
 
-  // &::-webkit-scrollbar-button:horizontal:increment:hover {
-  //   background-color: rgba(62, 126, 167, 0.8);
-  // }
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-button:horizontal:increment:hover {
+    background-color: rgba(62, 126, 167, 0.8);
+  }
 
   &::-webkit-scrollbar-corner {
     display: none;
@@ -325,10 +334,10 @@ const TinyImage = styled.img`
   cursor: pointer;
   margin: 5px;
   box-shadow: ${(props) =>
-    props.status === "marquee" ? "0 0 0 5px rgb(172, 170, 170);" : "none;"}
+    props.status === 'marquee' ? '0 0 0 5px rgb(172, 170, 170);' : 'none;'}
 
   transition: ${(props) =>
-    props.status === "marquee" ? "0.4s ease;" : "none;"}
+    props.status === 'marquee' ? '0.4s ease;' : 'none;'}
 `;
 
 export default GameCarousel;
