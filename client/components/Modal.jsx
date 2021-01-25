@@ -1,32 +1,31 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 class Modal extends React.Component {
   constructor(props) {
     super(props);
+    this.keyHandler = this.keyHandler.bind(this);
+  }
+
+  keyHandler(e) {
+    if (e.key === 'ArrowRight') {
+      this.props.incrementer();
+    } else if (e.key === 'ArrowLeft') {
+      this.props.decrementer();
+    }
   }
 
   renderView() {
     if (this.props.bigImg !== null) {
       return (
-        <Main>
+        <Main onKeyDown={this.keyHandler}>
           <ModalImg src={this.props.photos[this.props.bigImg].photoUrl} />
           <ModalFooter>
-            <FooterButton
-              onKeyDown={this.props.decrementer}
-              onClick={this.props.decrementer}
-            >
-              Prev
-            </FooterButton>
+            <FooterButton onClick={this.props.decrementer}>Prev</FooterButton>
             <FooterSpan>
               {this.props.bigImg + 1} of {this.props.photos.length} screenshots
             </FooterSpan>
-            <FooterButton
-              onKeyDown={this.props.incrementer}
-              onClick={this.props.incrementer}
-            >
-              Next
-            </FooterButton>
+            <FooterButton onClick={this.props.incrementer}>Next</FooterButton>
           </ModalFooter>
         </Main>
       );

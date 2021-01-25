@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
 function Nav() {
   return (
@@ -11,7 +11,7 @@ function Nav() {
         <DropDown>
           <NavButton>
             Your Store
-            <I className="fas fa-caret-down"></I>
+            <I className='fas fa-caret-down'></I>
           </NavButton>
           <DropDownContent>
             <DropSpan home>Home</DropSpan>
@@ -24,7 +24,7 @@ function Nav() {
         <DropDown>
           <NavButton>
             Browse
-            <I className="fas fa-caret-down"></I>
+            <I className='fas fa-caret-down'></I>
           </NavButton>
           <BrowseDropContent>
             <ColumnOne>
@@ -79,7 +79,7 @@ function Nav() {
         <NavButton>Vapor Labs</NavButton>
         <div></div>
         <SearchDiv>
-          <SearchInput placeholder="search the store"></SearchInput>
+          <SearchInput placeholder='search the store'></SearchInput>
         </SearchDiv>
       </SearchContent>
     </div>
@@ -171,6 +171,9 @@ margin-top: 2px;
   height: 30px;
   position: relative;
   background-image: url("https://steamstore-a.akamaihd.net/public/images/v6/store_header_search.png?v=1");
+  &:hover {
+    border: 1px solid #66c0f4;
+  }
 
 `;
 
@@ -217,7 +220,7 @@ const DropDownContent = styled.div`
   width: 215px;
   opacity: 0;
   ${DropDown}:hover & {
-    display: ${(props) => (props.browse ? "grid" : "flex")};
+    display: ${(props) => (props.browse ? 'grid' : 'flex')};
     flex-direction: column;
     border: none;
     opacity: 1;
@@ -245,8 +248,11 @@ const BrowseDropContent = styled.div`
     flex-direction: column;
     grid-template-columns: 180px 180px 180px;
     border: none;
+
+  }
+  ${NavButton}:hover &{
     opacity: 1;
-    transition: all 0.8s ease-in-out;
+    animation: ${fade} ease-in 1s;
   }
 `;
 
@@ -296,5 +302,15 @@ const EmptyDiv = styled.div`
   border-top: 1px white solid;
   margin: 0px 5px;
   padding-bottom: 5px;
+`;
+
+const fade = keyframes`
+0% {
+  opacity: 0;
+}
+
+100% {
+  opacity: 1;
+}
 `;
 export default Nav;
