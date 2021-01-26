@@ -290,10 +290,10 @@ const Carousel = styled.div`
     background-color: #192533;
     margin-top: 15px;
     border-radius: 3px;
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Caret_left_font_awesome.svg/512px-Caret_left_font_awesome.svg.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Caret_left_font_awesome.svg/512px-Caret_left_font_awesome.svg.png');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
   }
 
   &::-webkit-scrollbar-button:horizontal:decrement:hover {
