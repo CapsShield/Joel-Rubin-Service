@@ -26,7 +26,7 @@ const seedGames = (array) => {
 };
 
 
-// seedGames(gameSeed);
+seedGames(gameSeed);
 
 module.exports = gameSeed;
-console.log(gameSeed)
+

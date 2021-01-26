@@ -23,7 +23,8 @@ class Modal extends React.Component {
           <ModalFooter>
             <FooterButton onClick={this.props.decrementer}>Prev</FooterButton>
             <FooterSpan>
-              {this.props.bigImg + 1} of {this.props.photos.length} screenshots
+              {this.props.bigImg + 1} of {this.props.photos.length - 10}{' '}
+              screenshots
             </FooterSpan>
             <FooterButton onClick={this.props.incrementer}>Next</FooterButton>
           </ModalFooter>

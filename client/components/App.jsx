@@ -1,16 +1,15 @@
-import React from "react";
-import Header from "./Header.jsx";
-import Nav from "./Nav.jsx";
-import GameCarousel from "./GameCarousel.jsx";
-import axios from "axios";
-import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
+import React from 'react';
+import Header from './Header.jsx';
+import Nav from './Nav.jsx';
+import GameCarousel from './GameCarousel.jsx';
+import axios from 'axios';
+import styled, { createGlobalStyle } from 'styled-components';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photoId: 105,
+      photoId: 1,
       game: null,
       photos: null,
       reviews: null,
@@ -57,7 +56,7 @@ class App extends React.Component {
       this.state.userTags
     ) {
       return (
-        <div>
+        <OuterDiv>
           <GlobalStyle />
           <HeaderContainer>
             <Header />
@@ -74,7 +73,7 @@ class App extends React.Component {
               userTags={this.state.userTags}
             />
           </GameContainer>
-        </div>
+        </OuterDiv>
       );
     } else {
       return;
@@ -92,12 +91,16 @@ body {
   font-family: Arial, sans-serif;
   background-color: rgb(27, 40, 56);
   color: #dbe2e6;
+
+}`;
+
+const OuterDiv = styled.div`
+  height: 800px;
   background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
   background-position-x: 50%;
   background-position-y: -20%;
   background-repeat: no-repeat;
-}`;
-
+`;
 const Loading = styled.div`
   background-color: black;
   color: white;

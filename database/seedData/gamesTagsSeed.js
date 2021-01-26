@@ -26,18 +26,13 @@ let gamesTagsSeed = [
 
 const seedGamesTags = (array) => {
   for (let i = 5; i < 100; i++) {
-    var randomGameId = faker.random.number({ min: 1, max: 100 });
-    var randomTagId = faker.random.number({ min: 1, max: 100 });
+    var randomGameId = faker.random.number({ min: 2, max: 100 });
+    var randomTagId = faker.random.number({ min: 6, max: 100 });
     array[i] = { GameId: randomGameId, UserTagId: randomTagId };
   };
 };
 
 seedGamesTags(gamesTagsSeed);
-
-
-
-
-
 
 
 

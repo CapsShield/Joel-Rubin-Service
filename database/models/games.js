@@ -1,9 +1,7 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('vapor', 'root', null, {
-  host: 'localhost', dialect: 'mysql', logging: false
-});
+const db = require('../../database/index.js')
 
-const Games = sequelize.define('Games', {
+const Games = db.define('Games', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,

@@ -2,8 +2,7 @@ const express = require('express')
 const app = express()
 const { Op } = require('sequelize')
 const moment = require('moment')
-const db = require('../database').sequelize
-const { Games, GamesTags, Photos, Reviews, UserTags } = require('../database')
+const { Games, GamesTags, Photos, Reviews, UserTags } = require('../database/models/index.js')
 const port = 3000
 
 app.use(express.static('public'))
@@ -14,6 +13,7 @@ app.use(express.urlencoded({
 
 app.get('/api/games/:id/photo', (req, res) => {
   let id = req.params.id
+  console.log("request received")
   Photos.findAll({
     where: {
       GameId: id
@@ -86,14 +86,11 @@ app.get('/api/games/:id/userTags', (req, res) => {
   })
 })
 
-db.sync()
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`listening on localhost:${port}`)
-    })
-  })
-  .catch((err) => {
-    res.status(404).send(err)
-  })
+
+
+app.listen(port, () => {
+  console.log(`listening on localhost:${port}`)
+})
+
 
 
