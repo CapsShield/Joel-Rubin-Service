@@ -11,32 +11,24 @@ Carousel and Game Review Cmponent
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#requirements)
+3. [Development](#development)
 
 ## Usage
 
 > Getting Started:
+
 run:
-NPM RUN BUILD to transpile JSX with webpack
-NPM START to initialize nodemon and create connection with server
-NPM SEED to seed database
+
+npm install to install dependencies
+npm run build to transpile JSX with webpack
+npm start to initialize nodemon and create connection with server
+npm run seed to seed database
 
 ## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-
 
 ## Development
 
 ### Installing Dependencies
 
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
 

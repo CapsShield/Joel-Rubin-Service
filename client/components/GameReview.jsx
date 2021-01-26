@@ -18,7 +18,7 @@ function GameReview({ game, reviews, recentReviews, userTags }) {
     let sum = 0;
     array.forEach((game) => {
       if (game.pos_neg) {
-        sum += 2;
+        sum += 1.5;
       }
     });
     setTotalReview(sum);
@@ -28,7 +28,7 @@ function GameReview({ game, reviews, recentReviews, userTags }) {
     let sum = 0;
     recentReviews.forEach((game) => {
       if (game.pos_neg) {
-        sum += 2;
+        sum += 1.5;
       }
     });
     setRecentReview(sum);
