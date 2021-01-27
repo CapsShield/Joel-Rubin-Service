@@ -221,7 +221,7 @@ const ToolTip = styled.div`
   position: relative;
   display: inline-block;
   width: 600px;
-  color: rgb(85, 103, 114);
+  /* color: rgb(85, 103, 114); */
   padding-top: 10px;
 `;
 
@@ -229,9 +229,9 @@ const ToolTipText = styled.span`
   font-family: Arial;
   visibility: hidden;
   width: auto;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(186, 186, 186);
   box-shadow: rgb(0, 0, 0) 0px 0px 5px 0px;
-  color: rgb(69, 70, 70);
+  color: rgb(64, 66, 66);
   z-index: 99;
   font-size: 12px;
   bottom: 125%;

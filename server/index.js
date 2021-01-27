@@ -3,7 +3,8 @@ const app = express()
 const { Op } = require('sequelize')
 const moment = require('moment')
 const { Games, GamesTags, Photos, Reviews, UserTags } = require('../database/models/index.js')
-const port = 3000
+require('dotenv').config();
+const port = process.env.PORT || 3000
 
 app.use(express.static('public'))
 
