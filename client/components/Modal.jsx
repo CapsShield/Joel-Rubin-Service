@@ -5,33 +5,41 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.keyHandler = this.keyHandler.bind(this);
+    this.globalFocus = this.globalFocus.bind(this);
+  }
+
+  componentDidMount() {
+    this.globalFocus();
+  }
+
+  globalFocus() {
+    window.onkeydown = this.keyHandler;
   }
 
   keyHandler(e) {
+    // e.preventDefault();
     if (e.key === 'ArrowRight') {
       this.props.incrementer();
     } else if (e.key === 'ArrowLeft') {
       this.props.decrementer();
+    } else if (e.key === 'Escape') {
+      this.props.escapeKey();
     }
   }
 
   renderView() {
-    if (this.props.bigImg !== null) {
-      return (
-        <Main onKeyDown={this.keyHandler}>
-          <ModalImg src={this.props.photos[this.props.bigImg].photoUrl} />
-          <ModalFooter>
-            <FooterButton onClick={this.props.decrementer}>Prev</FooterButton>
-            <FooterSpan>
-              {this.props.bigImg + 1} of {this.props.photos.length} screenshots
-            </FooterSpan>
-            <FooterButton onClick={this.props.incrementer}>Next</FooterButton>
-          </ModalFooter>
-        </Main>
-      );
-    } else {
-      return <div>loading</div>;
-    }
+    return (
+      <Main onKeyDown={this.keyHandler}>
+        <ModalImg src={this.props.photos[this.props.bigImg].photoUrl} />
+        <ModalFooter>
+          <FooterButton onClick={this.props.decrementer}>Prev</FooterButton>
+          <FooterSpan>
+            {this.props.bigImg + 1} of {this.props.photos.length} screenshots
+          </FooterSpan>
+          <FooterButton onClick={this.props.incrementer}>Next</FooterButton>
+        </ModalFooter>
+      </Main>
+    );
   }
   render() {
     return <div>{this.renderView()}</div>;
@@ -55,7 +63,7 @@ const Main = styled.div`
   font-size: 12px;
   padding: 10px;
   position: absolute;
-  z-index: 99;
+  z-index: 100;
   max-height: 730px;
   max-width: 1250px;
   position: fixed;

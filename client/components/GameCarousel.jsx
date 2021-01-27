@@ -2,15 +2,14 @@ import React from 'react';
 import GameReview from './GameReview.jsx';
 import Modal from './Modal.jsx';
 import styled, { keyframes } from 'styled-components';
-import leftArrow from '/Users/joelrubin/Desktop/FEC/Joel-Rubin-Service/public/assets/leftArrow.png';
 
 class GameCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: null,
+      photos: [],
       i: 0,
-      bigImg: null,
+      bigImg: 1,
       clicked: false,
     };
     this.clickHandler = this.clickHandler.bind(this);
@@ -20,6 +19,7 @@ class GameCarousel extends React.Component {
     this.clickSet = this.clickSet.bind(this);
     this.incrementer = this.incrementer.bind(this);
     this.decrementer = this.decrementer.bind(this);
+    this.escapeKey = this.escapeKey.bind(this);
   }
 
   componentDidMount() {
@@ -36,9 +36,15 @@ class GameCarousel extends React.Component {
 
   photoInterval() {
     let len = this.props.photos.length;
-    this.setState({
-      i: this.state.i + 1,
-    });
+    if (this.state.i === len - 1) {
+      this.setState({
+        i: 0,
+      });
+    } else {
+      this.setState({
+        i: this.state.i + 1,
+      });
+    }
     this.autoScroll();
     if (this.state.i === len - 1) {
       this.setState({
@@ -50,7 +56,7 @@ class GameCarousel extends React.Component {
 
   autoScroll() {
     let elem = document.getElementById('photoCarousel');
-    if (this.state.i === 5) {
+    if (this.state.i % 5 === 0) {
       elem.scrollBy({
         top: 0,
         left: 1000,
@@ -91,6 +97,12 @@ class GameCarousel extends React.Component {
         clicked: false,
       });
     }
+  }
+
+  escapeKey() {
+    this.setState({
+      clicked: false,
+    });
   }
 
   incrementer() {
@@ -176,6 +188,7 @@ class GameCarousel extends React.Component {
                 clickSet={this.clickSet}
                 bigImg={this.state.bigImg}
                 photos={this.props.photos}
+                escapeKey={this.escapeKey}
               />
             </div>
           </FullScreen>
@@ -204,17 +217,17 @@ const GameTitle = styled.div`
 `;
 
 const CommunityButton = styled.button`
-  color: #67c1f5;
-  background: rgba(103, 193, 245, 0.2);
-  height: 30px;
-  outline: none;
   border: none;
   border-radius: 2px;
   cursor: pointer;
-
-  &: hover {
-    color: white;
-    background: linear-gradient(-60deg, #417a9b 5%, #67c1f5 95%);
+  color: #67c1f5 !important;
+  background: rgba(103, 193, 245, 0.2) !important;
+  line-height: 30px;
+  font-size: 15px;
+  padding: 1px 16px;
+  &:hover {
+    color: #fff !important;
+    background: linear-gradient(-60deg, #417a9b 5%, #67c1f5 95%) !important;
   }
 `;
 
@@ -290,21 +303,32 @@ const Carousel = styled.div`
     background-color: #192533;
     margin-top: 15px;
     border-radius: 3px;
-    // background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Caret_left_font_awesome.svg/512px-Caret_left_font_awesome.svg.png');
+    // background-image: url('https://store.akamai.steamstatic.com/public/images/v6/icon_cluster_controls.png');
     // background-position: center;
     // background-repeat: no-repeat;
-    // background-size: cover;
+    // display: inline-block;
+    // background-position: -15px 5px;
+    // box-sizing: border-box;
+    // width: 9px;
+    // height: 7px;
   }
 
   &::-webkit-scrollbar-button:horizontal:decrement:hover {
     background-color: rgba(62, 126, 167, 0.8);
+    //   background-image: url('https://store.akamai.steamstatic.com/public/images/v6/icon_cluster_controls.png');
+    //   background-position: center;
+    //   background-repeat: no-repeat;
+
+    //   background-position: -20px -5px;
+    //   box-sizing: border-box;
+    // }
   }
 
   /* Right */
   &::-webkit-scrollbar-button:horizontal:increment:end {
     width: 37px;
     background-color: #192533;
-
+    margin-top: 15px;
     border-radius: 3px;
   }
 
@@ -323,9 +347,10 @@ const FullScreen = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  height: 100%;
-  width: 100%;
+  height: 1000px;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99;
 `;
 
 const TinyImage = styled.img`
@@ -334,10 +359,10 @@ const TinyImage = styled.img`
   cursor: pointer;
   margin: 5px;
   box-shadow: ${(props) =>
-    props.status === 'marquee' ? '0 0 0 5px rgb(172, 170, 170);' : 'none;'}
+    props.status === 'marquee' ? '0 0 0 5px rgb(172, 170, 170);' : 'none;'};
 
   transition: ${(props) =>
-    props.status === 'marquee' ? '0.4s ease;' : 'none;'}
+    props.status === 'marquee' ? '0.4s ease;' : 'none;'};
 `;
 
 export default GameCarousel;

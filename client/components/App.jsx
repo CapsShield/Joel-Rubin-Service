@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header.jsx';
 import Nav from './Nav.jsx';
 import GameCarousel from './GameCarousel.jsx';
+import Footer from './Footer.jsx';
 import axios from 'axios';
 import styled, { createGlobalStyle } from 'styled-components';
 
@@ -56,24 +57,27 @@ class App extends React.Component {
       this.state.userTags
     ) {
       return (
-        <OuterDiv>
-          <GlobalStyle />
-          <HeaderContainer>
-            <Header />
-          </HeaderContainer>
-          <NavContainer>
-            <Nav />
-          </NavContainer>
-          <GameContainer>
-            <GameCarousel
-              recentReviews={this.state.recentReviews}
-              reviews={this.state.reviews}
-              photos={this.state.photos}
-              game={this.state.game}
-              userTags={this.state.userTags}
-            />
-          </GameContainer>
-        </OuterDiv>
+        <div>
+          <OuterDiv id='outerDiv'>
+            <GlobalStyle />
+            <HeaderContainer>
+              <Header />
+            </HeaderContainer>
+            <NavContainer>
+              <Nav />
+            </NavContainer>
+            <GameContainer>
+              <GameCarousel
+                recentReviews={this.state.recentReviews}
+                reviews={this.state.reviews}
+                photos={this.state.photos}
+                game={this.state.game}
+                userTags={this.state.userTags}
+              />
+            </GameContainer>
+          </OuterDiv>
+          <Footer />
+        </div>
       );
     } else {
       return;
@@ -88,18 +92,19 @@ class App extends React.Component {
 
 const GlobalStyle = createGlobalStyle`
 body {
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   background-color: rgb(27, 40, 56);
   color: #dbe2e6;
+  background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
+  background-position-x: 50%;
+  background-position-y: 100px;
+  background-repeat: no-repeat;
 
 }`;
 
 const OuterDiv = styled.div`
-  height: 800px;
-  background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
-  background-position-x: 50%;
-  background-position-y: -20%;
-  background-repeat: no-repeat;
+  height: 695px;
 `;
 const Loading = styled.div`
   background-color: black;

@@ -106,7 +106,7 @@ const CartButton = styled.button`
   border: none;
   border-radius: 2px;
   visibility: hidden;
-  &: hover {
+  &:hover {
     background-color: #8cb105;
     color: black;
   }
@@ -132,13 +132,13 @@ const NavButton = styled.button`
   border: none;
   padding-top: 3px;
   text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.25);
-  height: 35px;
+  height: 33px;
   cursor: pointer;
   border-right: 2.5px solid rgba(0, 0, 0, 0.25);
   width: 100%;
-  &: hover {
+  &:hover {
     background-color: #c6d4df;
-    text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.208);
     color: black;
   }
 
@@ -155,8 +155,8 @@ const I = styled.i`
 `;
 
 const NavImg = styled.img`
-padding-top: 5px;
-cursor: text:
+  padding-top: 5px;
+  cursor: text;
 `;
 
 const SearchDiv = styled.div`
@@ -216,7 +216,6 @@ const DropDownContent = styled.div`
   line-height: 10px;
   text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
-
   width: 215px;
   opacity: 0;
   ${DropDown}:hover & {
@@ -241,18 +240,17 @@ const BrowseDropContent = styled.div`
   line-height: 10px;
   text-shadow: rgba(255, 255, 255, 0.25) 1px 1px 0px;
   box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.75);
-  width: auto
+  width: auto;
   opacity: 0;
   ${DropDown}:hover & {
     display: grid;
-    flex-direction: column;
     grid-template-columns: 180px 180px 180px;
     border: none;
-
-  }
-  ${NavButton}:hover &{
     opacity: 1;
-    animation: ${fade} ease-in 1s;
+  }
+  ${NavButton}:hover & {
+    display: grid;
+    opacity: 1;
   }
 `;
 
