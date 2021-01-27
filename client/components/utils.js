@@ -72,7 +72,7 @@ let photos = [
   }
 ];
 
-let reviews = [
+let reviews =
   [
     {
       "id": 559,
