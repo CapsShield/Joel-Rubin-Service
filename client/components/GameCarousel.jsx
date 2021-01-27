@@ -2,13 +2,12 @@ import React from 'react';
 import GameReview from './GameReview.jsx';
 import Modal from './Modal.jsx';
 import styled, { keyframes } from 'styled-components';
-import leftArrow from '/Users/joelrubin/Desktop/FEC/Joel-Rubin-Service/public/assets/leftArrow.png';
 
 class GameCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: null,
+      photos: [],
       i: 0,
       bigImg: 1,
       clicked: false,
@@ -218,17 +217,17 @@ const GameTitle = styled.div`
 `;
 
 const CommunityButton = styled.button`
-  color: #67c1f5;
-  background: rgba(98, 121, 134, 0.2);
-  height: 30px;
-  outline: none;
   border: none;
   border-radius: 2px;
   cursor: pointer;
-
+  color: #67c1f5 !important;
+  background: rgba(103, 193, 245, 0.2) !important;
+  line-height: 30px;
+  font-size: 15px;
+  padding: 1px 16px;
   &:hover {
-    color: white;
-    background: linear-gradient(-60deg, #417a9b 5%, #67c1f5 95%);
+    color: #fff !important;
+    background: linear-gradient(-60deg, #417a9b 5%, #67c1f5 95%) !important;
   }
 `;
 
@@ -348,9 +347,10 @@ const FullScreen = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  height: 100%;
-  width: 100%;
+  height: 1000px;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
+  z-index: 99;
 `;
 
 const TinyImage = styled.img`
@@ -359,10 +359,10 @@ const TinyImage = styled.img`
   cursor: pointer;
   margin: 5px;
   box-shadow: ${(props) =>
-    props.status === 'marquee' ? '0 0 0 5px rgb(172, 170, 170);' : 'none;'}
+    props.status === 'marquee' ? '0 0 0 5px rgb(172, 170, 170);' : 'none;'};
 
   transition: ${(props) =>
-    props.status === 'marquee' ? '0.4s ease;' : 'none;'}
+    props.status === 'marquee' ? '0.4s ease;' : 'none;'};
 `;
 
 export default GameCarousel;

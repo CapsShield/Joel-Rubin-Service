@@ -27,8 +27,8 @@ const FooterDiv = styled.div`
   height: 45px;
   margin: auto;
   /* margin-top: 428px; */
-  background-color: transparent;
-  /* background-color: rgba(0, 0, 0, 0.2); */
+
+  background-color: rgba(0, 0, 0, 0.2);
   color: rgb(198, 212, 223);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -37,5 +37,11 @@ const FooterDiv = styled.div`
 const Text = styled.div`
   padding-left: 15px;
   padding-top: 15px;
+  b {
+    cursor: pointer;
+  }
+  b:hover {
+    color: rgb(102, 192, 244);
+  }
 `;
 export default Footer;

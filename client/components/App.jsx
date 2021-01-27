@@ -92,19 +92,19 @@ class App extends React.Component {
 
 const GlobalStyle = createGlobalStyle`
 body {
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
   background-color: rgb(27, 40, 56);
   color: #dbe2e6;
-
+  background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
+  background-position-x: 50%;
+  background-position-y: 100px;
+  background-repeat: no-repeat;
 
 }`;
 
 const OuterDiv = styled.div`
   height: 695px;
-  background-image: url('https://steamcdn-a.akamaihd.net/steam/apps/219890/page_bg_generated_v6b.jpg?t=1525832559');
-  background-position-x: 50%;
-  background-position-y: 0%;
-  background-repeat: no-repeat;
 `;
 const Loading = styled.div`
   background-color: black;

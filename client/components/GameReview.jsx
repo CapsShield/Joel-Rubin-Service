@@ -203,7 +203,7 @@ const TagButton = styled.button`
   line-height: 19px;
   cursor: pointer;
 
-  &: hover {
+  &:hover {
     color: white;
     background: linear-gradient(-60deg, #417a9b 5%, #67c1f5 95%);
   }
@@ -220,7 +220,7 @@ const UserTags = styled.div`
 const ToolTip = styled.div`
   position: relative;
   display: inline-block;
-  width: 400px;
+  width: 600px;
   color: rgb(85, 103, 114);
   padding-top: 10px;
 `;
@@ -228,24 +228,27 @@ const ToolTip = styled.div`
 const ToolTipText = styled.span`
   font-family: Arial;
   visibility: hidden;
-  width: 200px;
+  width: auto;
   background-color: rgba(0, 0, 0, 0);
-  box-shadow rgb(0, 0, 0) 0px 0px 5px 0px;
-  color: rgb(85, 103, 114)
+  box-shadow: rgb(0, 0, 0) 0px 0px 5px 0px;
+  color: rgb(69, 70, 70);
   z-index: 99;
   font-size: 12px;
   bottom: 125%;
   left: 15%;
   border-radius: 3px;
-  margin-left: -60px;
+  margin-left: -90px;
   position: absolute;
-  background-image linear-gradient(rgb(227, 234, 239) 5%, rgb(199, 213, 224) 95%);
+  white-space: nowrap;
+  background-image: linear-gradient(
+    rgb(227, 234, 239) 5%,
+    rgb(199, 213, 224) 95%
+  );
   background-size: auto;
   font-size: 12px;
-  padding: 5px 40px 5px 5px;
+  padding: 5px 20px 5px 5px;
   cursor: pointer;
   opacity: 0;
-
 
   ${ToolTip}:hover & {
     visibility: visible;

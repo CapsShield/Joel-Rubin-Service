@@ -63,7 +63,7 @@ const Main = styled.div`
   font-size: 12px;
   padding: 10px;
   position: absolute;
-  z-index: 99;
+  z-index: 100;
   max-height: 730px;
   max-width: 1250px;
   position: fixed;
