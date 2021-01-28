@@ -8,8 +8,9 @@ const { Games, GamesTags, Photos, Reviews, UserTags } = require('../database/mod
 
 const port = process.env.PORT;
 
-app.use(express.static('public'))
 app.use(compression())
+app.use(express.static('public'))
+
 
 app.use(express.urlencoded({
   extended: true
