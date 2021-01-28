@@ -10,8 +10,7 @@ function Nav() {
       <SearchContent>
         <DropDown>
           <NavButton>
-            Your Store
-            <I className='fas fa-caret-down'></I>
+            Your Store <span></span>
           </NavButton>
           <DropDownContent>
             <DropSpan home>Home</DropSpan>
@@ -23,8 +22,7 @@ function Nav() {
         </DropDown>
         <DropDown>
           <NavButton>
-            Browse
-            <I className='fas fa-caret-down'></I>
+            Browse <span></span>
           </NavButton>
           <BrowseDropContent>
             <ColumnOne>
@@ -144,6 +142,10 @@ const NavButton = styled.button`
 
   ${DropDown}:hover & {
     background-color: #c6d4df;
+  }
+
+  span {
+    background-image: url('https://store.cloudflare.steamstatic.com/public/images/v6/btn_arrow_down_padded_white.png');
   }
 `;
 

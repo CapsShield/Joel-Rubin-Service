@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express')
+const compression = require('compression');
 const app = express()
 const { Op } = require('sequelize')
 const moment = require('moment')
@@ -8,6 +9,7 @@ const { Games, GamesTags, Photos, Reviews, UserTags } = require('../database/mod
 const port = process.env.PORT;
 
 app.use(express.static('public'))
+app.use(compression())
 
 app.use(express.urlencoded({
   extended: true
