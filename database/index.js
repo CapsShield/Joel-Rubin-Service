@@ -1,5 +1,6 @@
+require('dotenv').config()
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('vapor', 'root', process.env.SQL_PASSWORD, {
+const sequelize = new Sequelize('vapor', 'root', 'V!foZyrl84H', {
   host: 'localhost', dialect: 'mysql', logging: false
 });
 

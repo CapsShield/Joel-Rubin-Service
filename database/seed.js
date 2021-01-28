@@ -27,6 +27,7 @@ db.sync({ force: true })
     return GamesTags.bulkCreate(gamesTagsSeed)
   })
   .then(() => {
+    console.log("All Seeded!")
     process.exit()
   })
   .catch((err) => {
@@ -35,6 +36,3 @@ db.sync({ force: true })
 
 
 
-// module.exports = {
-//   sequelize, Games, GamesTags, Photos, Reviews, UserTags
-// };

@@ -199,6 +199,7 @@ const DropDown = styled.div`
   display: inline-block;
   &:hover > ${NavButton} {
     background-color: #c6d4df;
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.208);
     color: black;
   }
 `;
