@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 function Header() {
   return (
@@ -8,20 +8,20 @@ function Header() {
         <div></div>
         <div>
           <RowOneButton install>
-            <Img src="https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1" />
+            <Img src='https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1' />
             Install Vapor
           </RowOneButton>
           <RowOneButton login>login</RowOneButton>
           <RowOneButton language>
             language
-            <I className="fas fa-caret-down"></I>
+            <img src='https://store.cloudflare.steamstatic.com/public/images/v6/btn_arrow_down_padded_white.png' />
           </RowOneButton>
         </div>
       </RowOne>
       <RowTwo>
         <div></div>
         <Logo>
-          <LogoImg src="https://i.imgur.com/zY1nThy.png" />
+          <LogoImg src='https://i.imgur.com/zY1nThy.png' />
         </Logo>
         <DropDown>
           <HeaderButtonDropDown>STORE</HeaderButtonDropDown>
@@ -72,13 +72,13 @@ const PageHeader = styled.div`
 `;
 
 const RowOneButton = styled.button`
-  background: ${(props) => (props.install ? "#5C7310" : "#171a21")};
+  background: ${(props) => (props.install ? '#5C7310' : '#171a21')};
   border: none;
-  border-right: ${(props) => (props.login ? "1px solid white" : "none")};
+  border-right: ${(props) => (props.login ? '1px solid white' : 'none')};
   color: #dbe2e6;
   margin-top: 5px;
   font-size: 11px;
-  padding: ${(props) => (props.install ? "#5px" : "none")};
+  padding: ${(props) => (props.install ? '#5px' : 'none')};
   cursor: pointer;
 
   &:hover {

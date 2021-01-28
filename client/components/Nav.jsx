@@ -10,7 +10,8 @@ function Nav() {
       <SearchContent>
         <DropDown>
           <NavButton>
-            Your Store <span></span>
+            Your Store{' '}
+            <img src='https://store.cloudflare.steamstatic.com/public/images/v6/btn_arrow_down_padded_white.png' />
           </NavButton>
           <DropDownContent>
             <DropSpan home>Home</DropSpan>
@@ -22,7 +23,8 @@ function Nav() {
         </DropDown>
         <DropDown>
           <NavButton>
-            Browse <span></span>
+            Browse{' '}
+            <img src='https://store.cloudflare.steamstatic.com/public/images/v6/btn_arrow_down_padded_white.png' />
           </NavButton>
           <BrowseDropContent>
             <ColumnOne>
@@ -146,6 +148,9 @@ const NavButton = styled.button`
 
   span {
     background-image: url('https://store.cloudflare.steamstatic.com/public/images/v6/btn_arrow_down_padded_white.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
   }
 `;
 

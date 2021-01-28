@@ -97,8 +97,8 @@ const ModalImg = styled.img`
   font-size: 12px;
   height: 100%;
   margin: 0px;
-  max-height: 807px;
-  max-width: 1237px;
+  max-height: 500px;
+  max-width: 800px;
   opacity: 1;
   padding: 0px;
   width: 1000px;

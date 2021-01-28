@@ -100,7 +100,9 @@ body {
   background-position-x: 50%;
   background-position-y: 100px;
   background-repeat: no-repeat;
-
+  position: relative;
+  margin: 0;
+  min-height: 100vh;
 }`;
 
 const OuterDiv = styled.div`

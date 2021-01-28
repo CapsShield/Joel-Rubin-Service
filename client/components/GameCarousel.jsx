@@ -141,6 +141,7 @@ class GameCarousel extends React.Component {
           <GamePhotos>
             <div>
               <MainImage
+                // src='https://cdn.cloudflare.steamstatic.com/steam/apps/219890/ss_4072c2f1de75d8abe76cbf328fa4b41adce27e0c.600x338.jpg?t=1525832559'
                 src={this.props.photos[this.state.i].photoUrl}
                 onClick={this.bigClickHandler}
                 data-i={this.state.i}
@@ -347,8 +348,8 @@ const FullScreen = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  height: 1000px;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 99;
 `;
