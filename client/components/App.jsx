@@ -18,35 +18,36 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    axios.get(`/api/games/${this.props.gameId || 1}/photo`).then((response) => {
+    let gameId = this.props.gameId || 1;
+    if (gameId > 100 || gameId < 0) {
+      gameId = 1;
+    }
+
+    axios.get(`/api/games/${gameId}/photo`).then((response) => {
       this.setState({
         photos: response.data,
       });
     });
-    axios.get(`api/games/${this.props.gameId || 1}/game`).then((response) => {
+    axios.get(`api/games/${gameId}/game`).then((response) => {
       this.setState({
         game: response.data,
       });
     });
-    axios.get(`/api/games/${this.props.gameId || 1}/reviews`).then((result) => {
+    axios.get(`/api/games/${gameId}/reviews`).then((result) => {
       this.setState({
         reviews: result,
       });
     });
-    axios
-      .get(`/api/games/${this.props.gameId || 1}/recentReviews`)
-      .then((result) => {
-        this.setState({
-          recentReviews: result,
-        });
+    axios.get(`/api/games/${gameId}/recentReviews`).then((result) => {
+      this.setState({
+        recentReviews: result,
       });
-    axios
-      .get(`/api/games/${this.props.gameId || 1}/userTags`)
-      .then((result) => {
-        this.setState({
-          userTags: result.data,
-        });
+    });
+    axios.get(`/api/games/${gameId}/userTags`).then((result) => {
+      this.setState({
+        userTags: result.data,
       });
+    });
   }
 
   renderView() {

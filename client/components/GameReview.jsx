@@ -12,7 +12,7 @@ function GameReview({ game, reviews, recentReviews, userTags }) {
   useEffect(() => {
     getAllResults(reviews);
     getRecentResults(recentReviews);
-  }, [reviews]);
+  }, [reviews, recentReviews]);
 
   const getAllResults = (array) => {
     let sum = 0;
@@ -213,7 +213,7 @@ const UserTags = styled.div`
   padding-top: 5px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  overflow: hidden;
   justify-content: space-around;
 `;
 
