@@ -1,4 +1,5 @@
 const faker = require('faker');
+const gameSeed = require('./gameSeed.js')
 
 let photos = [
   {
@@ -34,19 +35,29 @@ let photos = [
 ]
 
 
-const seedReviews = (array) => {
+const seedPhotos = (array) => {
 
-  for (let i = 10; i < 100; i++) {
-    var randomDesc = faker.commerce.productDescription();
-    var randomUrl = faker.image.imageUrl();
-    var randomNum = faker.random.number({ min: 2, max: 10 });
-    array[i] = { description: randomDesc, photoUrl: randomUrl, GameId: randomNum };
-  };
-};
+  //   for (let i = 10; i < 100; i++) {
+  //     var randomDesc = faker.commerce.productDescription();
+  //     var randomUrl = faker.image.imageUrl();
+  //     var randomNum = faker.random.number({ min: 2, max: 100 });
+  //     array[i] = { description: randomDesc, photoUrl: randomUrl, GameId: randomNum };
+  //   };
+  // };
+
+  for (let i = 1; i < gameSeed.length; i++) {
+    let randomNum = faker.random.number({ min: 5, max: 10 })
+    for (let j = 0; j < randomNum; j++) {
+      var randomDesc = faker.commerce.productDescription();
+      var randomUrl = faker.image.imageUrl();
+      array.push({ description: randomDesc, photoUrl: randomUrl, GameId: i + 1 })
+    }
+  }
+}
 
 
-
-seedReviews(photos);
+seedPhotos(photos);
 
 module.exports = photos;
+console.log(photos)
 
