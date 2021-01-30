@@ -10,7 +10,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      photoId: 1,
       game: null,
       photos: null,
       reviews: null,
@@ -19,33 +18,35 @@ class App extends React.Component {
     };
   }
   componentDidMount() {
-    axios.get(`/api/games/${this.state.photoId}/photo`).then((response) => {
+    axios.get(`/api/games/${this.props.gameId || 1}/photo`).then((response) => {
       this.setState({
         photos: response.data,
       });
     });
-    axios.get(`api/games/${this.state.photoId}/game`).then((response) => {
+    axios.get(`api/games/${this.props.gameId || 1}/game`).then((response) => {
       this.setState({
-        game: response,
+        game: response.data,
       });
     });
-    axios.get(`/api/games/${this.state.photoId}/reviews`).then((result) => {
+    axios.get(`/api/games/${this.props.gameId || 1}/reviews`).then((result) => {
       this.setState({
         reviews: result,
       });
     });
     axios
-      .get(`/api/games/${this.state.photoId}/recentReviews`)
+      .get(`/api/games/${this.props.gameId || 1}/recentReviews`)
       .then((result) => {
         this.setState({
           recentReviews: result,
         });
       });
-    axios.get(`/api/games/${this.state.photoId}/userTags`).then((result) => {
-      this.setState({
-        userTags: result.data,
+    axios
+      .get(`/api/games/${this.props.gameId || 1}/userTags`)
+      .then((result) => {
+        this.setState({
+          userTags: result.data,
+        });
       });
-    });
   }
 
   renderView() {

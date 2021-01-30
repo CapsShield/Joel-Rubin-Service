@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 function GameReview({ game, reviews, recentReviews, userTags }) {
-  let format = moment(game.data.releaseDate).format('ll');
+  let format = moment(game.releaseDate).format('ll');
 
   let [totalReview, setTotalReview] = useState(0);
   let [recentReview, setRecentReview] = useState(0);
@@ -80,10 +80,10 @@ function GameReview({ game, reviews, recentReviews, userTags }) {
   return (
     <Main>
       <HeaderDiv>
-        <HeaderImage src={game.data.gameHeaderImageUrl} />
+        <HeaderImage src={game.gameHeaderImageUrl} />
       </HeaderDiv>
       <GameSynopsis>
-        <GameSpan>{game.data.gameSynopsis}</GameSpan>
+        <GameSpan>{game.gameSynopsis}</GameSpan>
       </GameSynopsis>
       <ReviewTable>
         <ToolTip>
@@ -111,9 +111,9 @@ function GameReview({ game, reviews, recentReviews, userTags }) {
         <Gray>RELEASE DATE:</Gray>
         <Gray>{format}</Gray>
         <Gray>DEVELOPER: </Gray>
-        <BlueText>{game.data.developer}</BlueText>
+        <BlueText>{game.developer}</BlueText>
         <Gray>PUBLISHER: </Gray>
-        <BlueText>{game.data.publisher}</BlueText>
+        <BlueText>{game.publisher}</BlueText>
       </ReviewTable>
 
       <div>

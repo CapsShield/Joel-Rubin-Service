@@ -130,10 +130,10 @@ class GameCarousel extends React.Component {
       <CarouselHeader>
         <div></div>
         <Genres>
-          <span>All Games > Indie Games > {this.props.game.data.name}</span>
+          <span>All Games > Indie Games > {this.props.game.name}</span>
         </Genres>
         <GameTitle>
-          <span>{this.props.game.data.name}</span>
+          <span>{this.props.game.name}</span>
           <CommunityButton>Community Hub</CommunityButton>
         </GameTitle>
         <div></div>
@@ -151,6 +151,7 @@ class GameCarousel extends React.Component {
             <Carousel id='photoCarousel'>
               {this.props.photos.map((photo, idx) => (
                 <TinyImage
+                  className='tiny'
                   src={photo.photoUrl}
                   status={this.state.i === idx ? 'marquee' : 'normal'}
                   data-i={idx}

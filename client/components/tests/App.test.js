@@ -1,18 +1,41 @@
 import React from "react";
 import { expect } from "chai";
-import { shallow, mount } from "../../enzyme";
 import sinon from 'sinon'
 import App from "../App.jsx";
 import GameCarousel from "../GameCarousel.jsx";
 import GameReview from "../GameReview.jsx";
 import Nav from "../Nav.jsx";
 import Modal from "../Modal.jsx"
-import styled from "styled-components"
+import styled from "styled-components";
+import { gameSeed, photos, recentReviews, reviews, userTags } from '../utils.js'
+import 'jest-styled-components';
+import Enzyme, { configure, shallow, mount, render } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+
+configure({ adapter: new Adapter() })
 
 /*
 App Tests:
 1) need to test that information is received from API calls
 2) check that info is then used to set State of App component
+*/
+describe("<GameCarousel />", () => {
+  it('maps correct # of photos to the carousel', () => {
+    let props = {
+      photos: photos,
+      game: gameSeed,
+      reviews: reviews,
+      userTags: userTags,
+      recentReviews: recentReviews
+    }
+    let wrapper = shallow(<GameCarousel {...props} />);
+    let length = props.photos.length
+    expect(wrapper.find(".tiny")).to.have.lengthOf(length)
+  })
+  it()
+});
+
+/*
 
 Game Carousel:
 1) Need to test that clickHandler accurately grabs value and sets State
@@ -37,17 +60,17 @@ Nav:
 
 */
 
-describe("<Nav />", () => {
-  it('renders children when passed in', () => {
-    const wrapper = shallow((
-      <Nav>
-        <I className="fas fa-caret-down"></I>
-      </Nav>
-    ));
-    expect(wrapper.contains(<I className="fas fa-caret-down"></I>)).to.equal(true);
-  })
+// describe("<Nav />", () => {
+//   it('renders children when passed in', () => {
+//     const wrapper = shallow((
+//       <Nav>
+//         <I className="fas fa-caret-down"></I>
+//       </Nav>
+//     ));
+//     expect(wrapper.contains(<I className="fas fa-caret-down"></I>)).to.equal(true);
+//   })
 
-});
+// });
 
 
 
