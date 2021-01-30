@@ -37,14 +37,6 @@ let photos = [
 
 const seedPhotos = (array) => {
 
-  //   for (let i = 10; i < 100; i++) {
-  //     var randomDesc = faker.commerce.productDescription();
-  //     var randomUrl = faker.image.imageUrl();
-  //     var randomNum = faker.random.number({ min: 2, max: 100 });
-  //     array[i] = { description: randomDesc, photoUrl: randomUrl, GameId: randomNum };
-  //   };
-  // };
-
   for (let i = 1; i < gameSeed.length; i++) {
     let randomNum = faker.random.number({ min: 5, max: 10 })
     for (let j = 0; j < randomNum; j++) {
@@ -59,5 +51,5 @@ const seedPhotos = (array) => {
 seedPhotos(photos);
 
 module.exports = photos;
-console.log(photos)
+
 
