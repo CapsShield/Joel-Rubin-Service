@@ -23,5 +23,6 @@ npm run seed to seed database
 
 ## Screenshot
 
-![preview gif](https://media0.giphy.com/media/m5B8Fvjxp89Ltvui9T/giphy.gif)
+
+![preview](https://media0.giphy.com/media/m5B8Fvjxp89Ltvui9T/giphy.gif)
 
