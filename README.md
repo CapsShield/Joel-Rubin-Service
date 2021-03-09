@@ -8,11 +8,7 @@ Carousel and Game Review Cmponent
   - https://github.com/CapsShield/TeamBuild
 
 
-## Table of Contents
 
-1. [Usage](#Usage)
-2. [Requirements](#requirements)
-3. [Development](#development)
 
 ## Usage
 
@@ -25,10 +21,7 @@ npm run build to transpile JSX with webpack
 npm start to initialize nodemon and create connection with server
 npm run seed to seed database
 
-## Requirements
+## Screenshot
 
-## Development
-
-### Installing Dependencies
-
+![preview gif](https://media0.giphy.com/media/m5B8Fvjxp89Ltvui9T/giphy.gif)
 
